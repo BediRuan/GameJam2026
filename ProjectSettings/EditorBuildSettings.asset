@@ -20,5 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Cowsins/Scenes/3D/3DLevelSelector.unity
     guid: 498156ccab6484849bb5cbaa4b90fe6a
+  - enabled: 1
+    path: Assets/SusanScene/SceneDefualt.unity
+    guid: c900e10fbc8c7fc47a5a43ec1d02b833
+  - enabled: 1
+    path: Assets/SusanScene/SusanScene1.unity
+    guid: 27045a866b93a9f4990b5778b1561b06
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 33f591010f343104f853b337a1fca25a, type: 2}
+  m_UseUCBPForAssetBundles: 0
