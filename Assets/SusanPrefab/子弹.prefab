@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d526b1704edc52d4eb5ffccc35965487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  damage: 1
+  damage: 5
   lifeSeconds: 6
   playerTag: Player
   groundMask:
