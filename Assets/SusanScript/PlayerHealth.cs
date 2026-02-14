@@ -7,6 +7,8 @@ public class PlayerHealth : MonoBehaviour
 
     public System.Action<int, int> onHpChanged;
 
+    bool isDead = false;
+
     void Awake()
     {
         currentHp = maxHp;
@@ -15,18 +17,33 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
+        if (isDead) return;
+
         currentHp = Mathf.Max(0, currentHp - amount);
+
         onHpChanged?.Invoke(currentHp, maxHp);
 
         if (currentHp <= 0)
-        {
             Die();
-        }
     }
+
+    public void Heal(int amount)
+    {
+        if (currentHp <= 0) return;
+
+        currentHp = Mathf.Min(maxHp, currentHp + amount);
+
+        onHpChanged?.Invoke(currentHp, maxHp);
+    }
+
 
     void Die()
     {
+        if (isDead) return;
+        isDead = true;
+
         Debug.Log("Player Dead");
-        // 你后面再接死亡逻辑
+
+        Destroy(gameObject);
     }
 }
