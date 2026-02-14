@@ -3,19 +3,19 @@ using UnityEngine;
 public class SliderPlatformController : MonoBehaviour
 {
     public PlayerHealth playerHealth;
-
-    [Header("World Range")]
     public Transform leftPoint;
     public Transform rightPoint;
 
-    [Header("Movement")]
-    public bool smoothMove = true;
-    public float smoothSpeed = 12f;
-
-    [Header("Optional")]
+    public float smoothSpeed = 8f;
     public bool lockY = true;
 
+    Rigidbody2D rb;
     float fixedY;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void Start()
     {
@@ -25,28 +25,20 @@ public class SliderPlatformController : MonoBehaviour
             if (p) playerHealth = p.GetComponent<PlayerHealth>();
         }
 
-        fixedY = transform.position.y;
+        fixedY = rb.position.y;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!playerHealth || !leftPoint || !rightPoint) return;
 
         float hp01 = playerHealth.maxHp <= 0 ? 0f : (float)playerHealth.currentHp / playerHealth.maxHp;
         hp01 = Mathf.Clamp01(hp01);
 
-        // 规则：血满在右边，血空在左边
-        Vector3 targetPos = Vector3.Lerp(leftPoint.position, rightPoint.position, hp01);
+        Vector2 target = Vector2.Lerp(leftPoint.position, rightPoint.position, hp01);
+        if (lockY) target.y = fixedY;
 
-        if (lockY) targetPos.y = fixedY;
-
-        if (smoothMove)
-        {
-            transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * smoothSpeed);
-        }
-        else
-        {
-            transform.position = targetPos;
-        }
+        Vector2 next = Vector2.Lerp(rb.position, target, Time.fixedDeltaTime * smoothSpeed);
+        rb.MovePosition(next);
     }
 }

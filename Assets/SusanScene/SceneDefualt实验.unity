@@ -171,10 +171,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6929611115838359137, guid: 24d0198052b2e7947905ce135af40fca, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -312,6 +308,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1980, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!4 &493358992 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7352737559716295920, guid: 24d0198052b2e7947905ce135af40fca, type: 3}
+  m_PrefabInstance: {fileID: 57596181}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &550325181
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,7 +850,8 @@ GameObject:
   - component: {fileID: 1488869232}
   - component: {fileID: 1488869235}
   - component: {fileID: 1488869234}
-  m_Layer: 0
+  - component: {fileID: 1488869236}
+  m_Layer: 3
   m_Name: "\u53EF\u79FB\u52A8\u7684\u8840\u6761slider\u5E73\u53F0"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -991,7 +993,6 @@ MonoBehaviour:
   playerHealth: {fileID: 223331776}
   leftPoint: {fileID: 843680436}
   rightPoint: {fileID: 1716795618}
-  smoothMove: 1
   smoothSpeed: 12
   lockY: 1
 --- !u!114 &1488869235
@@ -1008,6 +1009,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SliderHealZone
   healPerTick: 1
   healInterval: 0.5
+  playerFoot: {fileID: 493358992}
+  footCheckSize: {x: 0.7, y: 0.08}
+  platformMask:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!50 &1488869236
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488869230}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &1716795617
 GameObject:
   m_ObjectHideFlags: 0
