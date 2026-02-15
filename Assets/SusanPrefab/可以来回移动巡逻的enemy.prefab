@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 550015117028905161}
   - component: {fileID: 4376229448727373746}
   - component: {fileID: 5013899035404005112}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4687638990186349158}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ThrowCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 744753953123614810}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2312853310255489309}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1157278172967454647}
   - component: {fileID: 444445227476926828}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: "\u53EF\u4EE5\u6765\u56DE\u79FB\u52A8\u5DE1\u903B\u7684enemy"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
