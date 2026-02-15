@@ -602,6 +602,26 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 999
       objectReference: {fileID: 0}
+    - target: {fileID: 247097976433644994, guid: 6aaa94a18913a4a4b986589877d8f8a1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 247097976433644994, guid: 6aaa94a18913a4a4b986589877d8f8a1, type: 3}
+      propertyPath: jumpScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 247097976433644994, guid: 6aaa94a18913a4a4b986589877d8f8a1, type: 3}
+      propertyPath: jumpScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 247097976433644994, guid: 6aaa94a18913a4a4b986589877d8f8a1, type: 3}
+      propertyPath: landScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 247097976433644994, guid: 6aaa94a18913a4a4b986589877d8f8a1, type: 3}
+      propertyPath: landScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2130404744810392304, guid: 6aaa94a18913a4a4b986589877d8f8a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.1277
