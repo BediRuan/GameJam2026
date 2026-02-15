@@ -62,6 +62,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: VolFx::VolFx.ColorMapPass
   _active: 1
   _shader: {fileID: 4800000, guid: 5c8038ea0b6f4d94abca9e7bf5c15beb, type: 3}
+--- !u!114 &-7231278093639761238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 063490ea7eee1234dae602553a20b2f5, type: 3}
+  m_Name: Interferences
+  m_EditorClassIdentifier: FronkonGames.Glitches.Interferences::FronkonGames.Glitches.Interferences.Interferences
+  m_Active: 1
 --- !u!114 &-6777079679310357055
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -430,7 +443,8 @@ MonoBehaviour:
   - {fileID: 1230161503212221364}
   - {fileID: -31253247116744946}
   - {fileID: -825268799595962259}
-  m_RendererFeatureMap: ad6b866f10d7b46cb43353975e6912110e67875b56f790ff6da0de33660e8cf4
+  - {fileID: -7231278093639761238}
+  m_RendererFeatureMap: ad6b866f10d7b46cb43353975e6912110e67875b56f790ff6da0de33660e8cf4aac28904e356a59b
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}

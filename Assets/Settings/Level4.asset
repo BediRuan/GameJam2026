@@ -50,6 +50,131 @@ MonoBehaviour:
   dirtIntensity:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &-3923753614486599329
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ae87a5161a8104b8ac482903c3da2a, type: 3}
+  m_Name: BadGPUVolume
+  m_EditorClassIdentifier: FronkonGames.Glitches.BadGPU::FronkonGames.Glitches.BadGPU.BadGPUVolume
+  active: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.006
+  balance:
+    m_OverrideState: 1
+    m_Value: -0.59
+  booster:
+    m_OverrideState: 1
+    m_Value: 1
+  blend:
+    m_OverrideState: 1
+    m_Value: 4
+  tint:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  glitch1:
+    m_OverrideState: 1
+    m_Value: 0.112
+  glitch1Speed:
+    m_OverrideState: 1
+    m_Value: 0.15
+  glitch1Threshold:
+    m_OverrideState: 1
+    m_Value: 0.7
+  glitch2:
+    m_OverrideState: 1
+    m_Value: 0.1
+  glitch2Speed:
+    m_OverrideState: 1
+    m_Value: 3
+  glitch2Threshold:
+    m_OverrideState: 1
+    m_Value: 0.9
+  glitch3:
+    m_OverrideState: 1
+    m_Value: 0.1
+  glitch3Speed:
+    m_OverrideState: 1
+    m_Value: 0.2
+  glitch3Threshold:
+    m_OverrideState: 1
+    m_Value: 0.62
+  glitch4:
+    m_OverrideState: 1
+    m_Value: 0.1
+  glitch4Speed:
+    m_OverrideState: 1
+    m_Value: 0.03
+  glitch4Threshold:
+    m_OverrideState: 1
+    m_Value: 0.99
+  brightness:
+    m_OverrideState: 1
+    m_Value: 0
+  contrast:
+    m_OverrideState: 1
+    m_Value: 1
+  gamma:
+    m_OverrideState: 1
+    m_Value: 1
+  hue:
+    m_OverrideState: 1
+    m_Value: 0
+  saturation:
+    m_OverrideState: 1
+    m_Value: 1
+  affectSceneView:
+    m_OverrideState: 1
+    m_Value: 0
+--- !u!114 &-3626236509557382268
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96468967439741488ad1b1af1ab44b9b, type: 3}
+  m_Name: ScanlinesVol
+  m_EditorClassIdentifier: VolFx::VolFx.ScanlinesVol
+  active: 1
+  m_Intensity:
+    m_OverrideState: 1
+    m_Value: 0.018
+  m_Count:
+    m_OverrideState: 1
+    m_Value: 454
+  m_Speed:
+    m_OverrideState: 0
+    m_Value: 0.17
+  m_Color:
+    m_OverrideState: 1
+    m_Value: 0
+  m_Flicker:
+    m_OverrideState: 0
+    m_Value: 0
+  m_Grad:
+    m_OverrideState: 0
+    m_Value: 0.33
+  m_Animation:
+    m_OverrideState: 0
+    m_Value: 1
+  m_GradSpeed:
+    m_OverrideState: 1
+    m_Value: 0.2
+  m_Flip:
+    m_OverrideState: 1
+    m_Value: 0
+  m_GradColor:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 0.07}
 --- !u!114 &-3357603926938260329
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -90,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584f4d053daa4e17a331821f306111c9, type: 3}
   m_Name: ChromaticVol
   m_EditorClassIdentifier: VolFx::VolFx.ChromaticVol
-  active: 0
+  active: 1
   _Weight:
     m_OverrideState: 1
     m_Value: 0.335
@@ -125,7 +250,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: SampleSceneProfile
+  m_Name: Level4
   m_EditorClassIdentifier: 
   components:
   - {fileID: 849379129802519247}
@@ -139,6 +264,9 @@ MonoBehaviour:
   - {fileID: -1088005541620602001}
   - {fileID: 2922984606021740239}
   - {fileID: 7310001565357922224}
+  - {fileID: -3923753614486599329}
+  - {fileID: 4925376229554254044}
+  - {fileID: -3626236509557382268}
 --- !u!114 &849379129802519247
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -270,6 +398,73 @@ MonoBehaviour:
   m_Alpha:
     m_OverrideState: 1
     m_Value: 0
+--- !u!114 &4925376229554254044
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6856d47d797869a429baa6830acad632, type: 3}
+  m_Name: InterferencesVolume
+  m_EditorClassIdentifier: FronkonGames.Glitches.Interferences::FronkonGames.Glitches.Interferences.InterferencesVolume
+  active: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.236
+  blend:
+    m_OverrideState: 1
+    m_Value: 16
+  offset:
+    m_OverrideState: 1
+    m_Value: 1
+  distortion:
+    m_OverrideState: 1
+    m_Value: 0.25
+  distortionSpeed:
+    m_OverrideState: 1
+    m_Value: 10
+  distortionDensity:
+    m_OverrideState: 1
+    m_Value: 2
+  distortionAmplitude:
+    m_OverrideState: 1
+    m_Value: 0.15
+  distortionFrequency:
+    m_OverrideState: 1
+    m_Value: 0.3
+  scanlines:
+    m_OverrideState: 1
+    m_Value: 0.75
+  scanlinesDensity:
+    m_OverrideState: 1
+    m_Value: 0.25
+  scanlinesOpacity:
+    m_OverrideState: 1
+    m_Value: 0.5
+  brightness:
+    m_OverrideState: 1
+    m_Value: 0
+  contrast:
+    m_OverrideState: 1
+    m_Value: 1
+  gamma:
+    m_OverrideState: 1
+    m_Value: 1
+  hue:
+    m_OverrideState: 1
+    m_Value: 0
+  saturation:
+    m_OverrideState: 1
+    m_Value: 1
+  affectSceneView:
+    m_OverrideState: 1
+    m_Value: 0
+  whenToInsert:
+    m_OverrideState: 1
+    m_Value: 550
 --- !u!114 &5114558345968298429
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -282,13 +477,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aebac967aa993140ab1982d43b8450a, type: 3}
   m_Name: GlitchVol
   m_EditorClassIdentifier: VolFx::VolFx.GlitchVol
-  active: 0
+  active: 1
   _weight:
     m_OverrideState: 1
     m_Value: 0.06
   _power:
     m_OverrideState: 1
-    m_Value: 0.708
+    m_Value: 0.077
   _scale:
     m_OverrideState: 1
     m_Value: 0.539
@@ -545,7 +740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba41c240f778d164abc40f8dca90fc16, type: 3}
   m_Name: AsciiVol
   m_EditorClassIdentifier: VolFx::VolFx.AsciiVol
-  active: 0
+  active: 1
   m_Scale:
     m_OverrideState: 1
     m_Value: 1
@@ -648,7 +843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb2952b95454955ba507c3d96778a76, type: 3}
   m_Name: VhsVol
   m_EditorClassIdentifier: VolFx::VolFx.VhsVol
-  active: 0
+  active: 1
   _weight:
     m_OverrideState: 1
     m_Value: 0.123
@@ -731,7 +926,7 @@ MonoBehaviour:
   active: 0
   m_Weight:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.896
   m_WeightOverride:
     m_OverrideState: 1
     m_Value: 0
