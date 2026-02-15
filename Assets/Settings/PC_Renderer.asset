@@ -245,6 +245,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: VolFx::VolFx.InvertPass
   _active: 1
   _shader: {fileID: 4800000, guid: a8a8d9d8743c6f64b89ba15b99d6ba9c, type: 3}
+--- !u!114 &-825268799595962259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25670ecf38ada54eb35f0b2878dc5b4, type: 3}
+  m_Name: Shake
+  m_EditorClassIdentifier: FronkonGames.SpiceUp.Shake::FronkonGames.SpiceUp.Shake.Shake
+  m_Active: 0
+  settings:
+    intensity: 1
+    direction: {x: 7.24, y: 4.79}
+    duration: 0.5
+    zoom: 0.2
+    shakeStrength: 0.1
+    shakeFrequency: 20
+    shakeAberration: {x: 2, y: 4, z: 6}
+    shakeDistort: 0.05
+    noiseStrength: 0.2
+    noiseFrequency: 2
+    progress: 0
+    brightness: 0
+    contrast: 1
+    gamma: 1
+    hue: 0
+    saturation: 1
+    affectSceneView: 0
+    whenToInsert: 550
 --- !u!114 &-824574722160953774
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -397,7 +429,8 @@ MonoBehaviour:
   - {fileID: 7833122117494664109}
   - {fileID: 1230161503212221364}
   - {fileID: -31253247116744946}
-  m_RendererFeatureMap: ad6b866f10d7b46cb43353975e6912110e67875b56f790ff
+  - {fileID: -825268799595962259}
+  m_RendererFeatureMap: ad6b866f10d7b46cb43353975e6912110e67875b56f790ff6da0de33660e8cf4
   m_UseNativeRenderPass: 1
   xrSystemData: {fileID: 0}
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}

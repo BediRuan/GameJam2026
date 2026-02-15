@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 110ed3a1021866841816a76728fbc3ab
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 258721
+  packageName: 'Spice Up: Shake'
+  packageVersion: 2.1.3
+  assetPath: Assets/FronkonGames/SpiceUp/Shake/Editor/Internal/SupportWindow.cs
+  uploadId: 784578

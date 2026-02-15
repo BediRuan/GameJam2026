@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 63592937642cfed4db8dcf5f552c80a4
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 258721
+  packageName: 'Spice Up: Shake'
+  packageVersion: 2.1.3
+  assetPath: Assets/FronkonGames/SpiceUp/Shake/Editor/FronkonGames.SpiceUp.Shake.Editor.asmdef
+  uploadId: 784578

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 2ef2a91f9b5d6964688176291dde4699
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 258721
+  packageName: 'Spice Up: Shake'
+  packageVersion: 2.1.3
+  assetPath: Assets/FronkonGames/SpiceUp/Shake/Demo/Settings/Shake Universal Render
+    Pipeline Asset_Renderer.asset
+  uploadId: 784578

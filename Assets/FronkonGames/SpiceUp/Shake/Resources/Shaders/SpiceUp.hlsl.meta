@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: bd73a55180b56f34680aacf4473ffc22
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 258721
+  packageName: 'Spice Up: Shake'
+  packageVersion: 2.1.3
+  assetPath: Assets/FronkonGames/SpiceUp/Shake/Resources/Shaders/SpiceUp.hlsl
+  uploadId: 784578
