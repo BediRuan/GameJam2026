@@ -6,6 +6,8 @@ public class PlayerSpawnController : MonoBehaviour
     [Header("Spit FX")]
     public float spitDuration = 0.35f;
 
+    SpawnPoint currentSpawnPoint;
+
     void Start()
     {
         PlaceAtSpawnPoint();
@@ -16,20 +18,25 @@ public class PlayerSpawnController : MonoBehaviour
     {
         string needId = PortalTravelData.NextSpawnId;
 
-        // 找匹配spawnId的SpawnPoint
         SpawnPoint[] points = FindObjectsOfType<SpawnPoint>();
+
         foreach (var p in points)
         {
             if (p.spawnId == needId)
             {
                 transform.position = p.transform.position;
+                currentSpawnPoint = p; // ← 保存spawnpoint
                 return;
             }
         }
 
-        // fallback：找tag为SpawnPoint
+        // fallback
         GameObject tagged = GameObject.FindGameObjectWithTag("SpawnPoint");
-        if (tagged != null) transform.position = tagged.transform.position;
+        if (tagged != null)
+        {
+            transform.position = tagged.transform.position;
+            currentSpawnPoint = tagged.GetComponent<SpawnPoint>();
+        }
     }
 
     IEnumerator SpitInRoutine()
@@ -40,7 +47,13 @@ public class PlayerSpawnController : MonoBehaviour
         Vector3 endScale = transform.localScale;
         transform.localScale = Vector3.zero;
 
-        // 先淡入（黑到透明）
+        // ★ 调用门 sprite 开关
+        if (currentSpawnPoint != null && currentSpawnPoint.door != null)
+        {
+            currentSpawnPoint.door.PlayOpenClose();
+        }
+
+        // 淡入
         if (SceneFader.Instance != null)
             yield return SceneFader.Instance.FadeIn();
 
@@ -54,6 +67,7 @@ public class PlayerSpawnController : MonoBehaviour
         }
 
         transform.localScale = endScale;
+
         if (rb) rb.simulated = true;
     }
 }
