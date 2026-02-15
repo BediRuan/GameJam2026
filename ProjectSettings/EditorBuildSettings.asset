@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: 694376f8c6a81504aad2b4cf3b59814a
+  - enabled: 1
     path: Assets/Forest/Forest Scene/Level1.unity
     guid: c0eec38071712444595da91a0ca1eca5
   - enabled: 1
@@ -26,9 +29,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Forest/Forest Scene/Level8.unity
     guid: f5961791fd4da044a80204d84ea0cf61
-  - enabled: 1
-    path: Assets/Scenes/End.unity
-    guid: 694376f8c6a81504aad2b4cf3b59814a
   - enabled: 0
     path: Assets/SusanScene/SusanIntro.unity
     guid: dce5357fad712814484802907b8b536c
