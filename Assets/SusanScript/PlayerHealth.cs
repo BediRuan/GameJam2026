@@ -30,6 +30,8 @@ public class PlayerHealth : MonoBehaviour
     public float regenPauseAfterDamage = 0.8f;
 
     public System.Action<int, int> onHpChanged;
+    /// <summary> 受到伤害时触发，参数为伤害值。供 JiU 伤害数字等系统订阅。 </summary>
+    public System.Action<int> onDamageTaken;
 
     bool isDead = false;
 
@@ -81,6 +83,7 @@ public class PlayerHealth : MonoBehaviour
 
         currentHp = Mathf.Max(0, currentHp - amount);
         onHpChanged?.Invoke(currentHp, maxHp);
+        onDamageTaken?.Invoke(amount);
 
         invincibleUntil = Time.time + Mathf.Max(0f, invincibleSeconds);
 
