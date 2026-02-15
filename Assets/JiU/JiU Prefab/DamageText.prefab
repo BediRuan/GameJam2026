@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JiU.DamageNumber
   floatUpSpeed: 1.5
-  lifeTime: 3
+  lifeTime: 100
   textTMP: {fileID: 4030580616607206226}
   textUI: {fileID: 0}
 --- !u!1 &4984953538974758368
