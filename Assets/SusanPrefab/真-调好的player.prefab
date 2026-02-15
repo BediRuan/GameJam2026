@@ -247,6 +247,13 @@ MonoBehaviour:
   boundary: {x: 0, y: 0}
   cameraLaziness: 0.3
   fovSmoothness: 4
+  targetRb: {fileID: 0}
+  smoothTime: 0.12
+  maxFollowSpeed: 999
+  catchUpOnFastFall: 1
+  fastFallSpeedThreshold: -12
+  fastFallSmoothTime: 0.02
+  snapDistanceY: 2.5
 --- !u!1 &1402500756760208707
 GameObject:
   m_ObjectHideFlags: 0
@@ -2459,6 +2466,7 @@ GameObject:
   - component: {fileID: 7589690598845072126}
   - component: {fileID: 8515372088190888530}
   - component: {fileID: 5240679283619550801}
+  - component: {fileID: 2419877788825938061}
   m_Layer: 17
   m_Name: Player
   m_TagString: Player
@@ -3206,6 +3214,21 @@ MonoBehaviour:
   regenTickAmount: 3
   regenTickInterval: 0.35
   regenPauseAfterDamage: 0.8
+--- !u!114 &2419877788825938061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7723150326217957190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 291edbd0d1fbca648a78d8d25431f89c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JiU.DamageNumberSpawner
+  damageNumberPrefab: {fileID: 3020070447422676752, guid: f5bb2d8bc54afee4dbe6fbf693eb9499, type: 3}
+  spawnOffset: {x: 0, y: 1.2, z: 0}
+  useColliderTop: 1
 --- !u!1 &8019514137893551441
 GameObject:
   m_ObjectHideFlags: 0

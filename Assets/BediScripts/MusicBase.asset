@@ -13,9 +13,19 @@ MonoBehaviour:
   m_Name: MusicBase
   m_EditorClassIdentifier: Assembly-CSharp::MusicVariantDatabase
   entries:
-  - sceneName: 
+  - sceneName: Level1
     clip: {fileID: 0}
-  - sceneName: 
+  - sceneName: Level2
     clip: {fileID: 0}
-  - sceneName: 
+  - sceneName: Level3
+    clip: {fileID: 0}
+  - sceneName: Level4
+    clip: {fileID: 0}
+  - sceneName: Level5
+    clip: {fileID: 0}
+  - sceneName: Level6
+    clip: {fileID: 0}
+  - sceneName: Level7
+    clip: {fileID: 0}
+  - sceneName: Level8
     clip: {fileID: 0}
