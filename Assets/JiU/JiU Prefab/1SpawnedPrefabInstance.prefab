@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8709227293913516690}
   - component: {fileID: 3675784875409971690}
   m_Layer: 20
-  m_Name: SpawnedPrefabInstance
+  m_Name: 1SpawnedPrefabInstance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
