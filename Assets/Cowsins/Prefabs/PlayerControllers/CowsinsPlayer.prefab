@@ -1324,7 +1324,7 @@ Transform:
   m_GameObject: {fileID: 4483729059083163203}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -9.86, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2044,7 +2044,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHp: 25
-  currentHp: 0
+  currentHp: 25
+  invincibleSeconds: 0.5
+  blinkInterval: 0.08
+  blinkMode: 0
+  blinkDuration: 0.25
+  blinkToggles: 6
+  blinkRenderers: []
+  regenEnabled: 1
+  regenTickAmount: 1
+  regenTickInterval: 0.35
+  regenPauseAfterDamage: 1
 --- !u!1 &4483729059089273123
 GameObject:
   m_ObjectHideFlags: 0
@@ -3837,7 +3847,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1502074257364424689
 Transform:
   m_ObjectHideFlags: 0
