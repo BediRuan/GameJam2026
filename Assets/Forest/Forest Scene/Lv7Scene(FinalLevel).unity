@@ -1367,6 +1367,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 237372502511200228, guid: 6aaa94a18913a4a4b986589877d8f8a1, type: 3}
+      propertyPath: currentHp
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 237372502511200228, guid: 6aaa94a18913a4a4b986589877d8f8a1, type: 3}
       propertyPath: invincibleSeconds
       value: 0.6
       objectReference: {fileID: 0}
