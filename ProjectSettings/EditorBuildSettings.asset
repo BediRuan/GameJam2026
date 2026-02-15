@@ -6,30 +6,51 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Forest/Forest Scene/Level1.unity
+    guid: c0eec38071712444595da91a0ca1eca5
+  - enabled: 1
+    path: Assets/Forest/Forest Scene/Level2.unity
+    guid: 95cb45862a749e64aa1718e98e483504
+  - enabled: 1
+    path: Assets/Forest/Forest Scene/Level3.unity
+    guid: aadc19f8d48647543bcc78646dd740be
+  - enabled: 1
+    path: Assets/Forest/Forest Scene/Level4.unity
+    guid: a5ef5d71c491d864fb59fca80d75e32b
+  - enabled: 1
+    path: Assets/Forest/Forest Scene/Level6.unity
+    guid: ef559a09272001842a5e7ef17a5f1e49
+  - enabled: 1
+    path: Assets/Forest/Forest Scene/Level7.unity
+    guid: df79ef4a3b12d7041b3ddfc23ec1c581
+  - enabled: 1
+    path: Assets/Forest/Forest Scene/Level8.unity
+    guid: f5961791fd4da044a80204d84ea0cf61
+  - enabled: 1
     path: Assets/Scenes/End.unity
     guid: 694376f8c6a81504aad2b4cf3b59814a
   - enabled: 0
     path: Assets/SusanScene/SusanIntro.unity
     guid: dce5357fad712814484802907b8b536c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BediScene.unity
     guid: e0b32a15ad9719d4dad2659c4faa3db5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Cowsins/Scenes/MainMenu.unity
     guid: 5a420ab414981034f957abd6db06776b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Cowsins/Scenes/2D/Tutorial.unity
     guid: 41ca39fa4629a0f46a86384cb8be800e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Cowsins/Scenes/2D/2DShowcase.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Cowsins/Scenes/3D/3DShowroom.unity
     guid: 46c3addd807c7c64eb7d57e9e3879cd6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Cowsins/Scenes/3D/3DLevelSelector.unity
     guid: 498156ccab6484849bb5cbaa4b90fe6a
-  - enabled: 1
+  - enabled: 0
     path: "Assets/SusanScene/SceneDefualt\u5B9E\u9A8C.unity"
     guid: c900e10fbc8c7fc47a5a43ec1d02b833
   - enabled: 1

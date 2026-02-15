@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MusicVariantDatabase
   entries:
   - sceneName: Level1
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 256934fd3a10d6449bc689cd093c6e20, type: 3}
   - sceneName: Level2
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: baa586ef8dc96244e9df48105d5591d5, type: 3}
   - sceneName: Level3
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 095dee69a093b394e917591edf23e61e, type: 3}
   - sceneName: Level4
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 095dee69a093b394e917591edf23e61e, type: 3}
   - sceneName: Level5
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 79ee852cc7dcc10419294d9cafb95fac, type: 3}
   - sceneName: Level6
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 79ee852cc7dcc10419294d9cafb95fac, type: 3}
   - sceneName: Level7
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: b8b208b0484b2fc4d872b9e7f397df5c, type: 3}
   - sceneName: Level8
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: fe5c1b61d7261da4e876cca45df64790, type: 3}
