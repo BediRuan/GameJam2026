@@ -10,6 +10,13 @@ public class PauseButtonHit : MonoBehaviour
     public float bumpTime = 0.08f;
     public float hitAlpha = 0.6f;
 
+    [Header("Sprite Swap")]
+    public bool swapSpriteOnRecover = true;
+    public Sprite spriteAfterRecover;   // 图片2（开始）
+    public bool onlySwapOnce = true;
+
+    bool swapped = false;
+
     SpriteRenderer sr;
     Color startColor;
     Vector3 startPos;
@@ -23,7 +30,6 @@ public class PauseButtonHit : MonoBehaviour
         if (sr != null) startColor = sr.color;
 
         myCol = GetComponent<Collider2D>();
-
         startPos = transform.position;
     }
 
@@ -31,11 +37,8 @@ public class PauseButtonHit : MonoBehaviour
     {
         if (!collision.collider.CompareTag("Player")) return;
 
-        // 关键：不要用玩家rb的linearVelocity，用碰撞相对速度判断“是否从下往上顶”
-        // relativeVelocity 是 other 相对 this 的速度
         bool movingUpIntoButton = collision.relativeVelocity.y > requireRelativeUpVelocity;
 
-        // 关键：用bounds判断玩家确实在按钮下方
         bool playerIsBelow = true;
         if (myCol != null)
         {
@@ -61,7 +64,6 @@ public class PauseButtonHit : MonoBehaviour
 
     IEnumerator BumpRoutine()
     {
-        // 如果按钮是会被移动的，最好每次触发重新记一次当前位置
         startPos = transform.position;
         Vector3 upPos = startPos + Vector3.up * bumpUp;
 
@@ -95,5 +97,15 @@ public class PauseButtonHit : MonoBehaviour
 
         if (sr != null)
             sr.color = startColor;
+
+        // ⭐恢复时刻切换图片2
+        if (sr != null && swapSpriteOnRecover && spriteAfterRecover != null)
+        {
+            if (!onlySwapOnce || !swapped)
+            {
+                sr.sprite = spriteAfterRecover;
+                swapped = true;
+            }
+        }
     }
 }
