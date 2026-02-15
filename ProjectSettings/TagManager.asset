@@ -16,6 +16,7 @@ TagManager:
   - OneWayPlatform
   - Projectile
   - SpawnPoint
+  - AirWall
   layers:
   - Default
   - TransparentFX
