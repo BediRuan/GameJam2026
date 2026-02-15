@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a6466fb022cacce4fb9a1e32dd730f06
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 288689
+  packageName: 'Glitches: Bad GPU'
+  packageVersion: 2.1.3
+  assetPath: Assets/FronkonGames/Glitches/BadGPU/Runtime/BadGPU.Tools.cs
+  uploadId: 857292

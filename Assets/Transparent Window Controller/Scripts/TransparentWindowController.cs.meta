@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 060afd96c7bda8f499cc5d185667b5af
+AssetOrigin:
+  serializedVersion: 1
+  productId: 311549
+  packageName: Transparent Desktop Window Controller
+  packageVersion: 2.2
+  assetPath: Assets/Transparent Window Controller/Scripts/TransparentWindowController.cs
+  uploadId: 800648

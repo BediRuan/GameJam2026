@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a191219145d99644da1cf2f43ecc9963
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 288689
+  packageName: 'Glitches: Bad GPU'
+  packageVersion: 2.1.3
+  assetPath: Assets/FronkonGames/Glitches/BadGPU/Demo/Textures/orange.mat
+  uploadId: 857292

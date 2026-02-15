@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 781d013ffbb01ec43957f87ebb910704
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 311549
+  packageName: Transparent Desktop Window Controller
+  packageVersion: 2.2
+  assetPath: Assets/Transparent Window Controller/Samples/Method_1.unity
+  uploadId: 800648

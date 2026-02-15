@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: acf2c5c4e04c46042ab1076cd1e4f4fe
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 288689
+  packageName: 'Glitches: Bad GPU'
+  packageVersion: 2.1.3
+  assetPath: Assets/FronkonGames/Glitches/BadGPU/Resources/Shaders/GlitchesBadGPU_URP.shader
+  uploadId: 857292

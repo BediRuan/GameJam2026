@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e00ce3979cf52af4ebf3188162485cf3
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 311549
+  packageName: Transparent Desktop Window Controller
+  packageVersion: 2.2
+  assetPath: Assets/Transparent Window Controller/Samples/Floor.mat
+  uploadId: 800648

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3c308679e4280f6428e97f8b309750d7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 288689
+  packageName: 'Glitches: Bad GPU'
+  packageVersion: 2.1.3
+  assetPath: Assets/FronkonGames/Glitches/BadGPU/Demo/Textures/dark.mat
+  uploadId: 857292

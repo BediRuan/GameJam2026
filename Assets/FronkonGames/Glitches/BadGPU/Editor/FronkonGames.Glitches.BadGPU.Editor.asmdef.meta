@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 33baef675dea0cc408fafc2d19313283
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 288689
+  packageName: 'Glitches: Bad GPU'
+  packageVersion: 2.1.3
+  assetPath: Assets/FronkonGames/Glitches/BadGPU/Editor/FronkonGames.Glitches.BadGPU.Editor.asmdef
+  uploadId: 857292

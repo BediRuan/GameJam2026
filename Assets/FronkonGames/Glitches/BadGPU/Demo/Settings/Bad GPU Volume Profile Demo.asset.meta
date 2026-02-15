@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: efd8b5d7606433a43be1c005b0f04e0a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 288689
+  packageName: 'Glitches: Bad GPU'
+  packageVersion: 2.1.3
+  assetPath: Assets/FronkonGames/Glitches/BadGPU/Demo/Settings/Bad GPU Volume Profile
+    Demo.asset
+  uploadId: 857292

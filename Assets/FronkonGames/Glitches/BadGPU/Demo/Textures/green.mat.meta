@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 363fcb920bb06dc4c93e1cf690a391c8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 288689
+  packageName: 'Glitches: Bad GPU'
+  packageVersion: 2.1.3
+  assetPath: Assets/FronkonGames/Glitches/BadGPU/Demo/Textures/green.mat
+  uploadId: 857292

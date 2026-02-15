@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 05c4e17d17ab03e4d96b290e5fc4b578
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 8404be70184654265930450def6a9037, type: 3}
+  generateWrapperCode: 0
+  wrapperCodePath: 
+  wrapperClassName: 
+  wrapperCodeNamespace: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 311549
+  packageName: Transparent Desktop Window Controller
+  packageVersion: 2.2
+  assetPath: Assets/Transparent Window Controller/Samples/InputSystem_Actions.inputactions
+  uploadId: 800648

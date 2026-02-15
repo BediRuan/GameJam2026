@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4743e4084682fc44daeb3f0af1325d05
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 311549
+  packageName: Transparent Desktop Window Controller
+  packageVersion: 2.2
+  assetPath: Assets/Transparent Window Controller/Samples/Robot(Author_gornostai).prefab
+  uploadId: 800648

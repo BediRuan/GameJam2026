@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 070e9c31abd10ad4387bc2a44fb88dd8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 288689
+  packageName: 'Glitches: Bad GPU'
+  packageVersion: 2.1.3
+  assetPath: Assets/FronkonGames/Glitches/BadGPU/Demo/Settings/Bad GPU Universal
+    Render Pipeline Asset.asset
+  uploadId: 857292

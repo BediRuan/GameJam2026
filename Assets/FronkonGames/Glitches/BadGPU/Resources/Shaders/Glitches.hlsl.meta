@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 411e01b25d4158b4ea12c74f528a19db
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 288689
+  packageName: 'Glitches: Bad GPU'
+  packageVersion: 2.1.3
+  assetPath: Assets/FronkonGames/Glitches/BadGPU/Resources/Shaders/Glitches.hlsl
+  uploadId: 857292

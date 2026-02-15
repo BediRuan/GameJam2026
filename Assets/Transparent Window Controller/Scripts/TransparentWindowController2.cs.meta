@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 9229051639367a64685ff747a848b31a
+timeCreated: 1480407394
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 311549
+  packageName: Transparent Desktop Window Controller
+  packageVersion: 2.2
+  assetPath: Assets/Transparent Window Controller/Scripts/TransparentWindowController2.cs
+  uploadId: 800648

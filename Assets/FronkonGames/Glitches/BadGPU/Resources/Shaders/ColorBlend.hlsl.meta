@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c94a6ae5b9a1ec4479f99e7248365e48
+ShaderIncludeImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 288689
+  packageName: 'Glitches: Bad GPU'
+  packageVersion: 2.1.3
+  assetPath: Assets/FronkonGames/Glitches/BadGPU/Resources/Shaders/ColorBlend.hlsl
+  uploadId: 857292
