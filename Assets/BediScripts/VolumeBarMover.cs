@@ -114,6 +114,12 @@ public class VolumeBarMover : MonoBehaviour
 
     private void UpdateGlobalVolume(bool instant)
     {
+        // 关键：如果开关是 Off，全局音量锁死为 0
+        if (!VolumeSwitchState.IsOn)
+        {
+            AudioListener.volume = 0f;
+            return;
+        }
         if (waypoints == null || waypoints.Length < 3) return;
         if (waypoints[0] == null || waypoints[2] == null) return;
 
