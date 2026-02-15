@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/End.unity
     guid: 694376f8c6a81504aad2b4cf3b59814a
   - enabled: 1
+    path: Assets/Forest/Forest Scene/TrueEnding.unity
+    guid: f19ee551d1074694bbb16e22f4c2329b
+  - enabled: 1
     path: Assets/Forest/Forest Scene/Level1.unity
     guid: c0eec38071712444595da91a0ca1eca5
   - enabled: 1
