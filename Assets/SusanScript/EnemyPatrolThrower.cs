@@ -24,6 +24,15 @@ public class EnemyPatrolThrower : MonoBehaviour
     public float throwSpeed = 9f;
     public float throwUpBoost = 0.8f;
 
+    [Header("Animation & Facing")]
+    [Tooltip("不填则自动从子物体获取。驱动 Bool Moving、Int Facing(1=右 -1=左)，基础朝向为朝右。")]
+    public Animator animator;
+    public string movingParam = "Moving";
+    public string facingParam = "Facing";
+
+    /// <summary> 1=朝右，-1=朝左，基础朝向为朝右。 </summary>
+    public int Facing => dir;
+
     int dir = 1;
     float nextThrowTime = 0f;
     Transform player;
@@ -31,10 +40,13 @@ public class EnemyPatrolThrower : MonoBehaviour
     void Awake()
     {
         if (!rb) rb = GetComponent<Rigidbody2D>();
+        if (!animator) animator = GetComponentInChildren<Animator>();
     }
 
     void Start()
     {
+        dir = 1;
+        FlipVisual();
         GameObject p = GameObject.FindGameObjectWithTag(playerTag);
         if (p) player = p.transform;
     }
@@ -64,6 +76,17 @@ public class EnemyPatrolThrower : MonoBehaviour
         {
             Patrol();
         }
+
+        UpdateAnimator();
+    }
+
+    void UpdateAnimator()
+    {
+        if (animator == null) return;
+        if (!string.IsNullOrEmpty(movingParam))
+            animator.SetBool(movingParam, Mathf.Abs(rb.linearVelocity.x) > 0.01f);
+        if (!string.IsNullOrEmpty(facingParam))
+            animator.SetInteger(facingParam, dir);
     }
 
     void Patrol()
