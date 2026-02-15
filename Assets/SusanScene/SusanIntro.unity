@@ -575,11 +575,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
   lines:
-  - HelpHelpHelpHelpHelpHelp!!!!
-  - 2222222222222222222222
-  - 33333333333333333333333
-  - 34444444444444444444444
-  - 555555555555
+  - ...Alright, just like this.
+  - Being pulled into a rift, falling from a great height,
+  - and arriving in a completely unfamiliar place...
+  - How many times has it been now?
+  - ....Oh that Sound Again.
   panelRoot: {fileID: 964911987}
   panelGroup: {fileID: 964911989}
   dialogueText: {fileID: 1378471710}
@@ -1601,6 +1601,30 @@ PrefabInstance:
     - target: {fileID: 6227906912023284242, guid: b33ef84519574724080ae565839e76f0, type: 3}
       propertyPath: nextKey
       value: 271
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227906912023284242, guid: b33ef84519574724080ae565839e76f0, type: 3}
+      propertyPath: lines.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227906912023284242, guid: b33ef84519574724080ae565839e76f0, type: 3}
+      propertyPath: 'lines.Array.data[0]'
+      value: My life had always been smooth sailing.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227906912023284242, guid: b33ef84519574724080ae565839e76f0, type: 3}
+      propertyPath: 'lines.Array.data[1]'
+      value: 'I was surrounded by people who loved me, '
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227906912023284242, guid: b33ef84519574724080ae565839e76f0, type: 3}
+      propertyPath: 'lines.Array.data[2]'
+      value: and people I loved in return.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227906912023284242, guid: b33ef84519574724080ae565839e76f0, type: 3}
+      propertyPath: 'lines.Array.data[3]'
+      value: We lived an ordinary but happy life.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6227906912023284242, guid: b33ef84519574724080ae565839e76f0, type: 3}
+      propertyPath: 'lines.Array.data[4]'
+      value: Until...
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
