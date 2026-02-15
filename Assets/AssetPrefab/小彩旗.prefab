@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 125609409393750406}
   - component: {fileID: 8993021077841765106}
   - component: {fileID: 80699030682608307}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: "\u5C0F\u5F69\u65D7"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664391099050726570}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.10534571, w: 0.9944357}
+  m_LocalRotation: {x: 0, y: 0, z: 0.105344206, w: 0.99443585}
   m_LocalPosition: {x: 8.7, y: -0.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
