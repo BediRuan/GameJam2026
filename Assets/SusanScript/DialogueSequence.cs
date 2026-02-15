@@ -10,6 +10,9 @@ public class DialogueSequence : MonoBehaviour
     [TextArea(2, 5)]
     public List<string> lines = new List<string>();
 
+    public bool IsFinished { get; private set; } = false;
+
+
     [Header("UI References")]
     public GameObject panelRoot;      // 对话框 Image 那层
     public CanvasGroup panelGroup;    // 挂在 panelRoot 上的 CanvasGroup
@@ -82,10 +85,15 @@ public class DialogueSequence : MonoBehaviour
 
     bool ShouldFreezeWorld()
     {
-        if (forceNoFreezeInLevel0 && SceneManager.GetActiveScene().buildIndex == 0)
-            return false;
+        // Level0 里不冻结，其它场景按 freezeWorld
+        if (forceNoFreezeInLevel0)
+        {
+            string sceneName = SceneManager.GetActiveScene().name;
+            if (sceneName == "SusanIntro") return false; // <- 这里写你的场景名
+        }
         return freezeWorld;
     }
+
 
     void Awake()
     {
@@ -140,6 +148,8 @@ public class DialogueSequence : MonoBehaviour
 
     void BeginNow()
     {
+        IsFinished = false;
+
         if (started) return;
         started = true;
 
@@ -284,35 +294,32 @@ public class DialogueSequence : MonoBehaviour
     {
         bool freeze = ShouldFreezeWorld();
 
-        // 关框后等一点 realtime，再恢复时间（避免键穿透）
         float delay = Mathf.Max(0f, unfreezeDelayRealtime);
         if (delay > 0f)
             yield return new WaitForSecondsRealtime(delay);
 
         if (freeze)
         {
-            // 恢复时间
             Time.timeScale = 1f;
 
-            // 恢复玩家动画
             if (playerAnimator != null)
                 playerAnimator.speed = animSpeedBefore;
 
-            // 吞几帧（让最后一次Enter/Space不会被“恢复的第一帧”读到）
             int frames = Mathf.Max(0, swallowFramesAfterUnfreeze);
             for (int i = 0; i < frames; i++)
                 yield return null;
         }
         else
         {
-            // 不冻结模式（Level0）：也可以吞几帧，防止下一帧触发别的输入逻辑
             int frames = Mathf.Max(0, swallowFramesAfterUnfreeze);
             for (int i = 0; i < frames; i++)
                 yield return null;
         }
 
+        IsFinished = true;      // ✅ 放这里
         Destroy(gameObject);
     }
+
 
     bool IsPlayerGrounded()
     {
