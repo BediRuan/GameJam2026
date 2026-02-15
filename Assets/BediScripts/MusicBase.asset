@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8664b272045ce0c4db888898ba805c85, type: 3}
+  m_Name: MusicBase
+  m_EditorClassIdentifier: Assembly-CSharp::MusicVariantDatabase
+  entries:
+  - sceneName: 
+    clip: {fileID: 0}
+  - sceneName: 
+    clip: {fileID: 0}
+  - sceneName: 
+    clip: {fileID: 0}
