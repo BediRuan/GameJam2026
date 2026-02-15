@@ -981,8 +981,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7177017443283635979}
   m_Father: {fileID: 6081447997204209221}
@@ -1036,7 +1036,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 940615882, guid: 1e05f972380196a418eeda6567fbc901, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d4ea76f9270f07c4095543d3b02c67b8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2299,6 +2299,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHp: 25
   currentHp: 0
+  invincibleSeconds: 0.8
+  blinkInterval: 0.08
+  blinkMode: 0
+  blinkDuration: 0.25
+  blinkToggles: 6
+  blinkRenderers: []
+  regenEnabled: 1
+  regenTickAmount: 3
+  regenTickInterval: 0.35
+  regenPauseAfterDamage: 0.8
 --- !u!1 &4634405174825735458
 GameObject:
   m_ObjectHideFlags: 0
@@ -3438,7 +3448,7 @@ Transform:
   m_GameObject: {fileID: 7083156045737124080}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.23, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
