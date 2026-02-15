@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering; // ✅ Volume 在这里
 
 public class PauseButtonHit : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class PauseButtonHit : MonoBehaviour
     public bool swapSpriteOnRecover = true;
     public Sprite spriteAfterRecover;   // 图片2（开始）
     public bool onlySwapOnce = true;
+
+    [Header("Volume Weight Toggle")]
+    public Volume targetVolume;         // ✅ 拖你的 Volume 进来
+    public float weightWhenOn = 1f;      // 默认切到 1
+    public float weightWhenOff = 0f;     // 默认切回 0
 
     bool swapped = false;
 
@@ -52,6 +58,9 @@ public class PauseButtonHit : MonoBehaviour
         if (bumpCo != null) StopCoroutine(bumpCo);
         bumpCo = StartCoroutine(BumpRoutine());
 
+        // ✅ 先切 volume 的 weight（或你也可以放到 TogglePause 后面）
+        ToggleVolumeWeight();
+
         if (PauseManager.Instance != null)
         {
             PauseManager.Instance.TogglePause();
@@ -60,6 +69,15 @@ public class PauseButtonHit : MonoBehaviour
         {
             Debug.LogError("PauseManager.Instance is null");
         }
+    }
+
+    void ToggleVolumeWeight()
+    {
+        if (targetVolume == null) return;
+
+        // 认为 “接近 0” 就算是关；否则算开
+        bool isOff = targetVolume.weight <= 0.001f;
+        targetVolume.weight = isOff ? weightWhenOn : weightWhenOff;
     }
 
     IEnumerator BumpRoutine()
