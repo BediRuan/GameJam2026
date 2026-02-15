@@ -52,6 +52,10 @@ public class DialogueSequence : MonoBehaviour
     public Animator playerAnimator;               // 可不填；冻结期间 anim.speed=0
     float animSpeedBefore = 1f;
 
+    // ✅ 句子播完事件：参数是当前句子的 index（0-based）
+    public System.Action<int> OnLineFinished;
+
+
     [Header("Debug")]
     public bool drawGizmos = true;
 
