@@ -106,6 +106,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -470,7 +483,7 @@ TextureImporter:
         width: 110
         height: 93
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -492,7 +505,7 @@ TextureImporter:
         width: 62
         height: 92
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -501,6 +514,28 @@ TextureImporter:
       bones: []
       spriteID: 7d9dc2a40c6cfc5499dbe6a71a119eef
       internalID: 1828658079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u505A\u597D\u7684UI_18"
+      rect:
+        serializedVersion: 2
+        x: 1539
+        y: 850
+        width: 124
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1a2eae094b2bed458a1388b8570f86a
+      internalID: 2001313994
       vertices: []
       indices: 
       edges: []
@@ -529,6 +564,7 @@ TextureImporter:
       "\u505A\u597D\u7684UI_15": -1247645476
       "\u505A\u597D\u7684UI_16": 1235352212
       "\u505A\u597D\u7684UI_17": 1828658079
+      "\u505A\u597D\u7684UI_18": 2001313994
       "\u505A\u597D\u7684UI_2": -1786233290
       "\u505A\u597D\u7684UI_3": -136949235
       "\u505A\u597D\u7684UI_4": -235287334
