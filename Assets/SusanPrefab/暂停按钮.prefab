@@ -184,3 +184,9 @@ MonoBehaviour:
   bumpUp: 0.18
   bumpTime: 0.08
   hitAlpha: 0.6
+  pauseButtonSprite: {fileID: 924889873, guid: 1ba376b4145b2e74891991bc8e36ccd8, type: 3}
+  runButtonSprite: {fileID: -1711361681, guid: 97767e207854f6a45a4710383e4d2c6e, type: 3}
+  swapSpriteOnTrigger: 1
+  targetVolume: {fileID: 0}
+  weightWhenOn: 1
+  weightWhenOff: 0

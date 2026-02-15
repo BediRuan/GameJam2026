@@ -11,17 +11,18 @@ public class PauseButtonHit : MonoBehaviour
     public float bumpTime = 0.08f;
     public float hitAlpha = 0.6f;
 
-    [Header("Sprite Swap")]
-    public bool swapSpriteOnRecover = true;
-    public Sprite spriteAfterRecover;   // 图片2（开始）
-    public bool onlySwapOnce = true;
+    [Header("Sprite Swap (Pause ⇄ Run)")]
+    [Tooltip("未暂停时显示的按钮图（留空则用物体当前 Sprite）")]
+    public Sprite pauseButtonSprite;
+    [Tooltip("暂停时显示的按钮图（顶击后切换）")]
+    public Sprite runButtonSprite;
+    [Tooltip("顶击时是否根据暂停状态切换 Sprite")]
+    public bool swapSpriteOnTrigger = true;
 
     [Header("Volume Weight Toggle")]
     public Volume targetVolume;         // ✅ 拖你的 Volume 进来
     public float weightWhenOn = 1f;      // 默认切到 1
     public float weightWhenOff = 0f;     // 默认切回 0
-
-    bool swapped = false;
 
     SpriteRenderer sr;
     Color startColor;
@@ -33,10 +34,29 @@ public class PauseButtonHit : MonoBehaviour
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
-        if (sr != null) startColor = sr.color;
+        if (sr != null)
+        {
+            startColor = sr.color;
+            if (pauseButtonSprite == null)
+                pauseButtonSprite = sr.sprite;
+        }
 
         myCol = GetComponent<Collider2D>();
         startPos = transform.position;
+    }
+
+    void Start()
+    {
+        SyncSpriteToPauseState();
+    }
+
+    /// <summary> 根据当前暂停状态显示对应 Sprite（暂停=运行按钮，未暂停=暂停按钮）。 </summary>
+    void SyncSpriteToPauseState()
+    {
+        if (sr == null || !swapSpriteOnTrigger) return;
+        bool paused = PauseManager.Instance != null && PauseManager.Instance.IsPaused;
+        sr.sprite = paused ? runButtonSprite : pauseButtonSprite;
+        if (sr.sprite == null) sr.sprite = pauseButtonSprite;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -58,12 +78,13 @@ public class PauseButtonHit : MonoBehaviour
         if (bumpCo != null) StopCoroutine(bumpCo);
         bumpCo = StartCoroutine(BumpRoutine());
 
-        // ✅ 先切 volume 的 weight（或你也可以放到 TogglePause 后面）
         ToggleVolumeWeight();
 
         if (PauseManager.Instance != null)
         {
             PauseManager.Instance.TogglePause();
+            if (swapSpriteOnTrigger)
+                SyncSpriteToPauseState();
         }
         else
         {
@@ -115,15 +136,5 @@ public class PauseButtonHit : MonoBehaviour
 
         if (sr != null)
             sr.color = startColor;
-
-        // ⭐恢复时刻切换图片2
-        if (sr != null && swapSpriteOnRecover && spriteAfterRecover != null)
-        {
-            if (!onlySwapOnce || !swapped)
-            {
-                sr.sprite = spriteAfterRecover;
-                swapped = true;
-            }
-        }
     }
 }
