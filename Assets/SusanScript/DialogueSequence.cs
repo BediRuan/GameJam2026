@@ -12,49 +12,40 @@ public class DialogueSequence : MonoBehaviour
 
     public bool IsFinished { get; private set; } = false;
 
-
     [Header("UI References")]
-    public GameObject panelRoot;      // 对话框 Image 那层
-    public CanvasGroup panelGroup;    // 挂在 panelRoot 上的 CanvasGroup
-    public TMP_Text dialogueText;     // TMP_Text
-
-    [Header("Input")]
-    //public KeyCode nextKey = KeyCode.Return; // Enter（主键盘）
-    //public bool alsoAcceptKeypadEnter = true;
+    public GameObject panelRoot;
+    public CanvasGroup panelGroup;
+    public TMP_Text dialogueText;
 
     [Header("Start Condition")]
-    public bool startDisabled = true;           // 游戏开始不播，等落地
-    public Transform player;                    // 可不填：自动找 tag=Player
-    public LayerMask groundMask = ~0;           // 只勾 Ground 更稳
+    public bool startDisabled = true;
+    public Transform player;
+    public LayerMask groundMask = ~0;
     public Vector2 groundCheckOffset = new Vector2(0f, -0.6f);
     public Vector2 groundCheckSize = new Vector2(0.5f, 0.12f);
 
     [Header("Timing")]
-    public float waitSecondsAfterGrounded = 0.8f; // ⭐落地后等（不冻结）
-    public float fadeInSeconds = 0.35f;           // ⭐淡入
+    public float waitSecondsAfterGrounded = 0.8f;
+    public float fadeInSeconds = 0.35f;
 
     [Header("Typewriter")]
-    public float typeCharInterval = 0.03f;        // realtime 打字速度
-    public bool allowSkipTyping = true;           // Enter 时若正在打字：直接显示整句
+    public float typeCharInterval = 0.03f;
+    public bool allowSkipTyping = true;
 
     [Header("Freeze Rules")]
-    [Tooltip("是否冻结世界（Time.timeScale=0）。注意：Level0会强制不冻结。")]
     public bool freezeWorld = true;
-
-    [Tooltip("BuildIndex==0 时强制不冻结（Level0开场展示镜头需要动）。")]
     public bool forceNoFreezeInLevel0 = true;
 
     [Header("Exit Safety (Fix Input Leak)")]
-    public float unfreezeDelayRealtime = 0.06f;   // ⭐关框后等多久再恢复时间
-    public int swallowFramesAfterUnfreeze = 1;    // ⭐恢复后吞几帧，防止Enter/Space穿透触发跳等
+    public float unfreezeDelayRealtime = 0.06f;
+    public int swallowFramesAfterUnfreeze = 1;
 
     [Header("Optional: Freeze Animator To Stop 1-Frame Flicker")]
-    public Animator playerAnimator;               // 可不填；冻结期间 anim.speed=0
+    public Animator playerAnimator;
     float animSpeedBefore = 1f;
 
     // ✅ 句子播完事件：参数是当前句子的 index（0-based）
     public System.Action<int> OnLineFinished;
-
 
     [Header("Debug")]
     public bool drawGizmos = true;
@@ -70,45 +61,29 @@ public class DialogueSequence : MonoBehaviour
     Coroutine typingCo;
     Coroutine endCo;
 
-    // ====== Public API (给Intro总控用) ======
     public bool IsPlaying => isPlaying;
     public bool HasStarted => started;
 
     public void PlayNow()
     {
-        // 外部强制开始（不依赖落地触发）
         if (started) return;
         BeginNow();
     }
 
-    public void PlayWithLines(List<string> newLines)
-    {
-        if (newLines != null) lines = newLines;
-        PlayNow();
-    }
-
     bool ShouldFreezeWorld()
     {
-        // Level0 里不冻结，其它场景按 freezeWorld
-        if (forceNoFreezeInLevel0)
-        {
-            string sceneName = SceneManager.GetActiveScene().name;
-            if (sceneName == "SusanIntro") return false; // <- 这里写你的场景名
-        }
+        if (forceNoFreezeInLevel0 && SceneManager.GetActiveScene().name == "SusanIntro")
+            return false;
         return freezeWorld;
     }
 
-
     void Awake()
     {
-        // 保险：避免上次暂停没恢复
         if (Time.timeScale == 0f) Time.timeScale = 1f;
 
         if (panelRoot != null) panelRoot.SetActive(false);
         if (panelGroup != null) panelGroup.alpha = 0f;
-
-        if (dialogueText != null)
-            dialogueText.text = "";
+        if (dialogueText != null) dialogueText.text = "";
     }
 
     void Start()
@@ -125,7 +100,6 @@ public class DialogueSequence : MonoBehaviour
 
     void Update()
     {
-        // 还没开始：等落地触发一次
         if (!started && startDisabled)
         {
             if (IsPlayerGrounded())
@@ -136,8 +110,7 @@ public class DialogueSequence : MonoBehaviour
         if (!isPlaying) return;
 
         bool nextPressed = Input.GetKeyDown(KeyCode.Return)
-                || Input.GetKeyDown(KeyCode.KeypadEnter);
-
+                        || Input.GetKeyDown(KeyCode.KeypadEnter);
 
         if (!nextPressed) return;
 
@@ -163,19 +136,16 @@ public class DialogueSequence : MonoBehaviour
 
     IEnumerator BeginDialogueFlow()
     {
-        // 1) 落地后先等（不冻结，玩家可动）
         float wait = Mathf.Max(0f, waitSecondsAfterGrounded);
         if (wait > 0f)
-            yield return new WaitForSeconds(wait); // 正常时间（timeScale=1）
+            yield return new WaitForSeconds(wait);
 
         bool freeze = ShouldFreezeWorld();
 
-        // 2) 可选：冻结世界
         if (freeze)
         {
             Time.timeScale = 0f;
 
-            // 可选：冻结玩家动画
             if (playerAnimator != null)
             {
                 animSpeedBefore = playerAnimator.speed;
@@ -183,7 +153,6 @@ public class DialogueSequence : MonoBehaviour
             }
         }
 
-        // 3) 打开对话框，淡入（淡入永远用 realtime）
         if (panelRoot != null) panelRoot.SetActive(true);
         if (dialogueText != null) dialogueText.text = "";
 
@@ -208,9 +177,7 @@ public class DialogueSequence : MonoBehaviour
             panelGroup.blocksRaycasts = true;
         }
 
-        // 4) 淡入完才开始播放文字（打字）
         StartDialogueContent();
-
         beginCo = null;
     }
 
@@ -229,12 +196,16 @@ public class DialogueSequence : MonoBehaviour
 
     void NextLine()
     {
+        // ✅ 在进入下一句之前：认为“当前句播完”
+        OnLineFinished?.Invoke(index);
+
         index++;
         if (index >= lines.Count)
         {
             EndDialogue();
             return;
         }
+
         PlayLine(index);
     }
 
@@ -281,15 +252,12 @@ public class DialogueSequence : MonoBehaviour
         if (!isPlaying) return;
         isPlaying = false;
 
-        // 停掉打字
         if (typingCo != null) StopCoroutine(typingCo);
         typingCo = null;
         isTyping = false;
 
-        // 先让对话框消失
         if (panelRoot != null) panelRoot.SetActive(false);
 
-        // 开始安全退出流程（延迟恢复 + 吞键）
         if (endCo != null) StopCoroutine(endCo);
         endCo = StartCoroutine(EndDialogueRoutine());
     }
@@ -308,22 +276,15 @@ public class DialogueSequence : MonoBehaviour
 
             if (playerAnimator != null)
                 playerAnimator.speed = animSpeedBefore;
-
-            int frames = Mathf.Max(0, swallowFramesAfterUnfreeze);
-            for (int i = 0; i < frames; i++)
-                yield return null;
-        }
-        else
-        {
-            int frames = Mathf.Max(0, swallowFramesAfterUnfreeze);
-            for (int i = 0; i < frames; i++)
-                yield return null;
         }
 
-        IsFinished = true;      // ✅ 放这里
+        int frames = Mathf.Max(0, swallowFramesAfterUnfreeze);
+        for (int i = 0; i < frames; i++)
+            yield return null;
+
+        IsFinished = true;
         Destroy(gameObject);
     }
-
 
     bool IsPlayerGrounded()
     {
@@ -334,32 +295,15 @@ public class DialogueSequence : MonoBehaviour
         return hit != null;
     }
 
-    void OnDrawGizmosSelected()
-    {
-        if (!drawGizmos) return;
-        if (player == null) return;
-
-        Gizmos.color = Color.yellow;
-        Vector2 center = (Vector2)player.position + groundCheckOffset;
-        Gizmos.DrawWireCube(center, groundCheckSize);
-    }
-
     void OnDisable()
     {
-        // 双保险：防止被禁用导致卡在暂停
-        if (Time.timeScale == 0f)
-            Time.timeScale = 1f;
-
-        if (playerAnimator != null)
-            playerAnimator.speed = animSpeedBefore;
+        if (Time.timeScale == 0f) Time.timeScale = 1f;
+        if (playerAnimator != null) playerAnimator.speed = animSpeedBefore;
     }
 
     void OnDestroy()
     {
-        if (Time.timeScale == 0f)
-            Time.timeScale = 1f;
-
-        if (playerAnimator != null)
-            playerAnimator.speed = animSpeedBefore;
+        if (Time.timeScale == 0f) Time.timeScale = 1f;
+        if (playerAnimator != null) playerAnimator.speed = animSpeedBefore;
     }
 }
