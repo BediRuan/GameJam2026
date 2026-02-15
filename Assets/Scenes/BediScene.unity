@@ -1300,63 +1300,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1634553487}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &515488892
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3832956139562525733, guid: f64c1e58073be7d40872cb35fb54dca7, type: 3}
-      propertyPath: m_Name
-      value: CowsinsPlayer (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6122633278115657121, guid: f64c1e58073be7d40872cb35fb54dca7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6122633278115657121, guid: f64c1e58073be7d40872cb35fb54dca7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.79
-      objectReference: {fileID: 0}
-    - target: {fileID: 6122633278115657121, guid: f64c1e58073be7d40872cb35fb54dca7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6122633278115657121, guid: f64c1e58073be7d40872cb35fb54dca7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6122633278115657121, guid: f64c1e58073be7d40872cb35fb54dca7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6122633278115657121, guid: f64c1e58073be7d40872cb35fb54dca7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6122633278115657121, guid: f64c1e58073be7d40872cb35fb54dca7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6122633278115657121, guid: f64c1e58073be7d40872cb35fb54dca7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6122633278115657121, guid: f64c1e58073be7d40872cb35fb54dca7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6122633278115657121, guid: f64c1e58073be7d40872cb35fb54dca7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f64c1e58073be7d40872cb35fb54dca7, type: 3}
 --- !u!4 &617433246 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7895650955508812356, guid: a35e9c56caf95384c837cf3c45a85c3e, type: 3}
@@ -3269,6 +3212,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45ee4bf0ff8c6524d8ea1dab060541eb, type: 3}
+--- !u!1001 &1346815247255950612
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5085085918682787721, guid: 5472c6d952a075f49b322e53ee4dcad0, type: 3}
+      propertyPath: m_Name
+      value: CowsinsPlayer (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999417449569203912, guid: 5472c6d952a075f49b322e53ee4dcad0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999417449569203912, guid: 5472c6d952a075f49b322e53ee4dcad0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999417449569203912, guid: 5472c6d952a075f49b322e53ee4dcad0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999417449569203912, guid: 5472c6d952a075f49b322e53ee4dcad0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999417449569203912, guid: 5472c6d952a075f49b322e53ee4dcad0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999417449569203912, guid: 5472c6d952a075f49b322e53ee4dcad0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999417449569203912, guid: 5472c6d952a075f49b322e53ee4dcad0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999417449569203912, guid: 5472c6d952a075f49b322e53ee4dcad0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999417449569203912, guid: 5472c6d952a075f49b322e53ee4dcad0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999417449569203912, guid: 5472c6d952a075f49b322e53ee4dcad0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5472c6d952a075f49b322e53ee4dcad0, type: 3}
 --- !u!1001 &1936795147661984121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3320,6 +3320,10 @@ PrefabInstance:
     - target: {fileID: 7154880924016211192, guid: 9aa42f92f231d87419bcd8119b429d39, type: 3}
       propertyPath: m_Name
       value: "\u5207\u6362level\u65F6\u4F7F\u7528\u7684Portal"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7154880924016211192, guid: 9aa42f92f231d87419bcd8119b429d39, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3743,5 +3747,5 @@ SceneRoots:
   - {fileID: 1220147526}
   - {fileID: 110981932}
   - {fileID: 344658072}
-  - {fileID: 515488892}
+  - {fileID: 1346815247255950612}
   - {fileID: 1936795147661984121}
