@@ -6,27 +6,30 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: 694376f8c6a81504aad2b4cf3b59814a
+  - enabled: 1
     path: Assets/Scenes/BediScene.unity
     guid: e0b32a15ad9719d4dad2659c4faa3db5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Cowsins/Scenes/MainMenu.unity
     guid: 5a420ab414981034f957abd6db06776b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Cowsins/Scenes/2D/Tutorial.unity
     guid: 41ca39fa4629a0f46a86384cb8be800e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Cowsins/Scenes/2D/2DShowcase.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Cowsins/Scenes/3D/3DShowroom.unity
     guid: 46c3addd807c7c64eb7d57e9e3879cd6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Cowsins/Scenes/3D/3DLevelSelector.unity
     guid: 498156ccab6484849bb5cbaa4b90fe6a
-  - enabled: 1
+  - enabled: 0
     path: "Assets/SusanScene/SceneDefualt\u5B9E\u9A8C.unity"
     guid: c900e10fbc8c7fc47a5a43ec1d02b833
-  - enabled: 1
+  - enabled: 0
     path: Assets/SusanScene/SusanScene1.unity
     guid: 27045a866b93a9f4990b5778b1561b06
   m_configObjects:
