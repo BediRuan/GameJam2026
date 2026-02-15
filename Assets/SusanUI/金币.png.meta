@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 67ca5fd5d8abed5468cbbfd8434592d6
+guid: baa1cffde0fdfe7468924c50c3a373e3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -94,19 +94,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -123,35 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u7EBD\u7EA6\u4EBA\u4FEE\u65392 _0"
+      name: "\u91D1\u5E01_0"
       rect:
         serializedVersion: 2
-        x: 8
-        y: 57
-        width: 441
-        height: 471
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 07070f23db5c8784f8e7cc079be23ba6
-      internalID: 848635351
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\u7EBD\u7EA6\u4EBA\u4FEE\u65392 _1"
-      rect:
-        serializedVersion: 2
-        x: 563
-        y: 249
+        x: 118
+        y: 110
         width: 80
-        height: 94
+        height: 78
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,52 +125,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8614010b3804194999efdce4117a873
-      internalID: 1557503342
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\u7EBD\u7EA6\u4EBA\u4FEE\u65392 _2"
-      rect:
-        serializedVersion: 2
-        x: 607
-        y: 136
-        width: 135
-        height: 77
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6c89962a34f2dcc49a1387b4621b7dfe
-      internalID: -110687514
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\u7EBD\u7EA6\u4EBA\u4FEE\u65392 _3"
-      rect:
-        serializedVersion: 2
-        x: 669
-        y: 241
-        width: 62
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4504a125b75fa2c45a7282db17ffb4c7
-      internalID: 198987375
+      spriteID: 2fe0942c98b3a3a4388f62c0861ff74b
+      internalID: 126645500
       vertices: []
       indices: 
       edges: []
@@ -214,7 +135,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: fad888df531378b4ab8011c8d4512fac
     internalID: 0
     vertices: []
     indices: 
@@ -226,10 +147,7 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      "\u7EBD\u7EA6\u4EBA\u4FEE\u65392 _0": 848635351
-      "\u7EBD\u7EA6\u4EBA\u4FEE\u65392 _1": 1557503342
-      "\u7EBD\u7EA6\u4EBA\u4FEE\u65392 _2": -110687514
-      "\u7EBD\u7EA6\u4EBA\u4FEE\u65392 _3": 198987375
+      "\u91D1\u5E01_0": 126645500
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

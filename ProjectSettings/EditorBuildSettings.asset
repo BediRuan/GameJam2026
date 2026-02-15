@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/SusanScene/SusanIntro.unity
     guid: dce5357fad712814484802907b8b536c
   - enabled: 1
