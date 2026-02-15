@@ -78,6 +78,9 @@ public class PlayerHealth : MonoBehaviour
         if (isDead) return;
         if (amount <= 0) return;
 
+        // 暂停时不受伤
+        if (PauseManager.Instance != null && PauseManager.Instance.IsPaused) return;
+
         // 无敌期间不受伤
         if (Time.time < invincibleUntil) return;
 

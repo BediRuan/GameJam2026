@@ -40,6 +40,12 @@ public class WindowZoomAndWallsController2D : MonoBehaviour
 
     int pendingReapply = -1;
 
+    /// <summary> ??????????? ApplyPreset ?????????????? </summary>
+    public int CurrentPresetIndex { get; private set; }
+
+    /// <summary> ????????????????? </summary>
+    public int PresetCount => presets != null ? presets.Length : 0;
+
     void Awake()
     {
         if (!targetCamera) targetCamera = Camera.main;
@@ -61,7 +67,7 @@ public class WindowZoomAndWallsController2D : MonoBehaviour
 
     void LateUpdate()
     {
-        // 有些情况下 SetResolution 需要下一帧才真正生效；这里补打一枪，保证 camera/walls 最终状态正确
+        // ???????? SetResolution ??????????????????????????????? camera/walls ?????????
         if (pendingReapply >= 0)
         {
             int idx = pendingReapply;
@@ -77,25 +83,44 @@ public class WindowZoomAndWallsController2D : MonoBehaviour
 
         if (forceWindowed) Screen.fullScreenMode = FullScreenMode.Windowed;
 
-        // 1) 先禁用所有墙组
+        // 1) ????????????
         for (int i = 0; i < presets.Length; i++)
         {
             if (presets[i] != null && presets[i].wallsRoot)
                 presets[i].wallsRoot.SetActive(false);
         }
 
-        // 2) 设置分辨率（Build里有效；Editor里窗口可能不变，但逻辑仍会跑）
+        // 2) ?????????Build???????Editor?????????????????????
         var p = presets[index];
         Screen.SetResolution(p.width, p.height, FullScreenMode.Windowed);
 
-        // 3) 设置相机 & 启用对应墙组
+        // 3) ??????? & ?????????
         ApplyCameraAndWallsOnly(index);
 
-        // 4) 下一帧再应用一次（更稳）
+        // 4) ??????????????????
         if (reapplyNextFrame)
             pendingReapply = index;
 
+        CurrentPresetIndex = index;
         Debug.Log($"[Preset {index + 1}] {p.name} {p.width}x{p.height}, ortho={p.cameraOrthoSize}, walls={(p.wallsRoot ? p.wallsRoot.name : "NULL")}");
+    }
+
+    /// <summary> ???????????+1???????????????????? </summary>
+    public void ApplyNextPreset()
+    {
+        if (PresetCount == 0) return;
+        int next = Mathf.Min(CurrentPresetIndex + 1, PresetCount - 1);
+        if (next != CurrentPresetIndex)
+            ApplyPreset(next);
+    }
+
+    /// <summary> ???????????-1??????????????????? </summary>
+    public void ApplyPreviousPreset()
+    {
+        if (PresetCount == 0) return;
+        int prev = Mathf.Max(CurrentPresetIndex - 1, 0);
+        if (prev != CurrentPresetIndex)
+            ApplyPreset(prev);
     }
 
     void ApplyCameraAndWallsOnly(int index)
