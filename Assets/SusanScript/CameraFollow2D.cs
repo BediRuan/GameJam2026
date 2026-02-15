@@ -46,4 +46,10 @@ public class CameraFollow2D : MonoBehaviour
 
         transform.position = smoothedPosition;
     }
+
+    public void SetFollowSpeed(float s)
+    {
+        followSpeed = s;
+    }
+
 }
