@@ -1531,6 +1531,53 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be8b9d8ebed2bab41815f666efec113a, type: 3}
+--- !u!1 &1233736985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1233736987}
+  - component: {fileID: 1233736986}
+  m_Layer: 0
+  m_Name: TransparentWindowController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1233736986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233736985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 060afd96c7bda8f499cc5d185667b5af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Desdinova.TransparentWindowController
+  transparentColor: {r: 0, g: 0, b: 0, a: 1}
+  WindowOpacity: 255
+  RemoveWindowBorder: 1
+--- !u!4 &1233736987
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233736985}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.94201, y: 4.19455, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1296772978
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2557,6 +2604,7 @@ SceneRoots:
   - {fileID: 1442268596}
   - {fileID: 1909147533}
   - {fileID: 755202455}
+  - {fileID: 1233736987}
   - {fileID: 1379543425}
   - {fileID: 425553768}
   - {fileID: 753500118}

@@ -2586,7 +2586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 060afd96c7bda8f499cc5d185667b5af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Desdinova.TransparentWindowController
-  transparentColor: {r: 1, g: 0, b: 1, a: 1}
+  transparentColor: {r: 0, g: 0, b: 0, a: 1}
   WindowOpacity: 255
   RemoveWindowBorder: 1
 --- !u!4 &1203326647
