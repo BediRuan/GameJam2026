@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DialogueSequence : MonoBehaviour
 {
@@ -15,8 +16,8 @@ public class DialogueSequence : MonoBehaviour
     public TMP_Text dialogueText;     // TMP_Text
 
     [Header("Input")]
-    public KeyCode nextKey = KeyCode.Return; // Enter（主键盘）
-
+    //public KeyCode nextKey = KeyCode.Return; // Enter（主键盘）
+    //public bool alsoAcceptKeypadEnter = true;
 
     [Header("Start Condition")]
     public bool startDisabled = true;           // 游戏开始不播，等落地
@@ -27,18 +28,25 @@ public class DialogueSequence : MonoBehaviour
 
     [Header("Timing")]
     public float waitSecondsAfterGrounded = 0.8f; // ⭐落地后等（不冻结）
-    public float fadeInSeconds = 0.35f;           // ⭐冻结后淡入
+    public float fadeInSeconds = 0.35f;           // ⭐淡入
 
     [Header("Typewriter")]
     public float typeCharInterval = 0.03f;        // realtime 打字速度
-    public bool allowSkipTyping = true;           // Space 跳过打字直接显示整句
+    public bool allowSkipTyping = true;           // Enter 时若正在打字：直接显示整句
 
-    [Header("Exit Safety (Fix Space Leak)")]
+    [Header("Freeze Rules")]
+    [Tooltip("是否冻结世界（Time.timeScale=0）。注意：Level0会强制不冻结。")]
+    public bool freezeWorld = true;
+
+    [Tooltip("BuildIndex==0 时强制不冻结（Level0开场展示镜头需要动）。")]
+    public bool forceNoFreezeInLevel0 = true;
+
+    [Header("Exit Safety (Fix Input Leak)")]
     public float unfreezeDelayRealtime = 0.06f;   // ⭐关框后等多久再恢复时间
-    public int swallowFramesAfterUnfreeze = 1;    // ⭐恢复后吞几帧，防止Space触发跳
+    public int swallowFramesAfterUnfreeze = 1;    // ⭐恢复后吞几帧，防止Enter/Space穿透触发跳等
 
     [Header("Optional: Freeze Animator To Stop 1-Frame Flicker")]
-    public Animator playerAnimator;               // 可不填；填了对话期间anim.speed=0
+    public Animator playerAnimator;               // 可不填；冻结期间 anim.speed=0
     float animSpeedBefore = 1f;
 
     [Header("Debug")]
@@ -55,16 +63,40 @@ public class DialogueSequence : MonoBehaviour
     Coroutine typingCo;
     Coroutine endCo;
 
+    // ====== Public API (给Intro总控用) ======
+    public bool IsPlaying => isPlaying;
+    public bool HasStarted => started;
+
+    public void PlayNow()
+    {
+        // 外部强制开始（不依赖落地触发）
+        if (started) return;
+        BeginNow();
+    }
+
+    public void PlayWithLines(List<string> newLines)
+    {
+        if (newLines != null) lines = newLines;
+        PlayNow();
+    }
+
+    bool ShouldFreezeWorld()
+    {
+        if (forceNoFreezeInLevel0 && SceneManager.GetActiveScene().buildIndex == 0)
+            return false;
+        return freezeWorld;
+    }
+
     void Awake()
     {
         // 保险：避免上次暂停没恢复
-        Time.timeScale = 1f;
+        if (Time.timeScale == 0f) Time.timeScale = 1f;
 
         if (panelRoot != null) panelRoot.SetActive(false);
         if (panelGroup != null) panelGroup.alpha = 0f;
 
         if (dialogueText != null)
-            dialogueText.text = ""; // 文字初始不显示
+            dialogueText.text = "";
     }
 
     void Start()
@@ -91,20 +123,19 @@ public class DialogueSequence : MonoBehaviour
 
         if (!isPlaying) return;
 
-        bool nextPressed =
-     Input.GetKeyDown(KeyCode.Return) ||
-     Input.GetKeyDown(KeyCode.KeypadEnter);
+        bool nextPressed = Input.GetKeyDown(KeyCode.Return)
+                || Input.GetKeyDown(KeyCode.KeypadEnter);
 
-        if (nextPressed)
+
+        if (!nextPressed) return;
+
+        if (isTyping)
         {
-            if (isTyping)
-            {
-                if (allowSkipTyping) FinishTypingInstant();
-                return;
-            }
-
-            NextLine();
+            if (allowSkipTyping) FinishTypingInstant();
+            return;
         }
+
+        NextLine();
     }
 
     void BeginNow()
@@ -121,21 +152,26 @@ public class DialogueSequence : MonoBehaviour
         // 1) 落地后先等（不冻结，玩家可动）
         float wait = Mathf.Max(0f, waitSecondsAfterGrounded);
         if (wait > 0f)
-            yield return new WaitForSeconds(wait); // 正常时间（此时timeScale=1）
+            yield return new WaitForSeconds(wait); // 正常时间（timeScale=1）
 
-        // 2) 冻结世界
-        Time.timeScale = 0f;
+        bool freeze = ShouldFreezeWorld();
 
-        // 可选：冻结玩家动画，避免按Space时“抖一帧”
-        if (playerAnimator != null)
+        // 2) 可选：冻结世界
+        if (freeze)
         {
-            animSpeedBefore = playerAnimator.speed;
-            playerAnimator.speed = 0f;
+            Time.timeScale = 0f;
+
+            // 可选：冻结玩家动画
+            if (playerAnimator != null)
+            {
+                animSpeedBefore = playerAnimator.speed;
+                playerAnimator.speed = 0f;
+            }
         }
 
-        // 3) 打开对话框，淡入
+        // 3) 打开对话框，淡入（淡入永远用 realtime）
         if (panelRoot != null) panelRoot.SetActive(true);
-        if (dialogueText != null) dialogueText.text = ""; // 淡入期间文字依然不显示
+        if (dialogueText != null) dialogueText.text = "";
 
         if (panelGroup != null)
         {
@@ -148,7 +184,7 @@ public class DialogueSequence : MonoBehaviour
 
             while (t < dur)
             {
-                t += Time.unscaledDeltaTime; // realtime
+                t += Time.unscaledDeltaTime;
                 panelGroup.alpha = Mathf.Clamp01(t / dur);
                 yield return null;
             }
@@ -208,7 +244,7 @@ public class DialogueSequence : MonoBehaviour
         for (int c = 0; c < full.Length; c++)
         {
             dialogueText.text += full[c];
-            yield return new WaitForSecondsRealtime(interval); // 不受timeScale影响
+            yield return new WaitForSecondsRealtime(interval);
         }
 
         isTyping = false;
@@ -236,7 +272,7 @@ public class DialogueSequence : MonoBehaviour
         typingCo = null;
         isTyping = false;
 
-        // 先让对话框消失（你要的：消失后才恢复时间）
+        // 先让对话框消失
         if (panelRoot != null) panelRoot.SetActive(false);
 
         // 开始安全退出流程（延迟恢复 + 吞键）
@@ -246,22 +282,34 @@ public class DialogueSequence : MonoBehaviour
 
     IEnumerator EndDialogueRoutine()
     {
-        // 关框后等一点 realtime，再恢复时间（避免 Space 穿透触发跳）
+        bool freeze = ShouldFreezeWorld();
+
+        // 关框后等一点 realtime，再恢复时间（避免键穿透）
         float delay = Mathf.Max(0f, unfreezeDelayRealtime);
         if (delay > 0f)
             yield return new WaitForSecondsRealtime(delay);
 
-        // 先恢复时间
-        Time.timeScale = 1f;
+        if (freeze)
+        {
+            // 恢复时间
+            Time.timeScale = 1f;
 
-        // 恢复玩家动画
-        if (playerAnimator != null)
-            playerAnimator.speed = animSpeedBefore;
+            // 恢复玩家动画
+            if (playerAnimator != null)
+                playerAnimator.speed = animSpeedBefore;
 
-        // 再吞几帧（让最后一次Space不会被“恢复的第一帧”读到）
-        int frames = Mathf.Max(0, swallowFramesAfterUnfreeze);
-        for (int i = 0; i < frames; i++)
-            yield return null;
+            // 吞几帧（让最后一次Enter/Space不会被“恢复的第一帧”读到）
+            int frames = Mathf.Max(0, swallowFramesAfterUnfreeze);
+            for (int i = 0; i < frames; i++)
+                yield return null;
+        }
+        else
+        {
+            // 不冻结模式（Level0）：也可以吞几帧，防止下一帧触发别的输入逻辑
+            int frames = Mathf.Max(0, swallowFramesAfterUnfreeze);
+            for (int i = 0; i < frames; i++)
+                yield return null;
+        }
 
         Destroy(gameObject);
     }

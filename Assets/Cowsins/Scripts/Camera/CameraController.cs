@@ -25,6 +25,19 @@ namespace cowsins2D
 
         [SerializeField] private float fovSmoothness;
 
+        [SerializeField] private Rigidbody2D targetRb;   // 可选：拖玩家的 Rigidbody2D
+        [SerializeField] private float smoothTime = 0.12f; // 平时跟随的平滑时间（越小越紧）
+        [SerializeField] private float maxFollowSpeed = 999f; // 允许相机追赶的最大速度（很大即可）
+
+        [Header("Fast Fall Catch-up")]
+        [SerializeField] private bool catchUpOnFastFall = true;
+        [SerializeField] private float fastFallSpeedThreshold = -12f; // 玩家y速度小于这个就算快速坠落
+        [SerializeField] private float fastFallSmoothTime = 0.02f;     // 快速坠落时的平滑（越小越贴）
+        [SerializeField] private float snapDistanceY = 2.5f;           // 若相机与玩家Y差距超过这个，直接贴上
+
+        private Vector3 _smoothVel;
+
+
 
         private float fov;
 
@@ -58,7 +71,40 @@ namespace cowsins2D
         }
 
         // Simply lerp the position of this object from the current one to the target and add the camera offset
-        private void SimpleFollowTarget() => transform.position = Vector3.Lerp(transform.position, target.position + (Vector3)cameraOffset, Time.deltaTime * 1 / cameraLaziness);
+        private void SimpleFollowTarget()
+        {
+            if (!target) return;
+
+            Vector3 desired = target.position + (Vector3)cameraOffset;
+
+            float curSmooth = smoothTime;
+
+            // 如果玩家在快速下落：相机更“紧”，必要时直接贴住Y
+            if (catchUpOnFastFall && targetRb != null)
+            {
+                if (targetRb.linearVelocity.y <= fastFallSpeedThreshold)
+                {
+                    curSmooth = fastFallSmoothTime;
+
+                    float dy = Mathf.Abs(desired.y - transform.position.y);
+                    if (dy > snapDistanceY)
+                    {
+                        // 只在Y轴瞬间贴上（X仍保持平滑）
+                        transform.position = new Vector3(transform.position.x, desired.y, desired.z);
+                    }
+                }
+            }
+
+            transform.position = Vector3.SmoothDamp(
+                transform.position,
+                desired,
+                ref _smoothVel,
+                curSmooth,
+                maxFollowSpeed,
+                Time.deltaTime
+            );
+        }
+
 
         // Only follow if out of bounds
         private void BoundsFollow()
@@ -82,7 +128,7 @@ namespace cowsins2D
             if (difY > boundary.y || difY < -boundary.y)
             {
                 if (transform.position.y < target.position.y) dif.y = difY - boundary.y;
-                else dif.y = difY + boundary.x;
+                else dif.y = difY + boundary.y; // ✅ 修复
             }
 
             // Lerp the position
