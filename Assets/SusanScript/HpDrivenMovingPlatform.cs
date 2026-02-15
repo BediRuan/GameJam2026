@@ -1,102 +1,128 @@
-using UnityEngine;
-using UnityEngine.Events;
 using cowsins2D;
+using System.Collections;
+using UnityEngine;
 
-namespace cowsins2D
+public class HpDrivenMovingPlatform : MonoBehaviour
 {
-    public class HpDrivenMovingPlatform : Trigger
+    [Header("HP Source")]
+    public PlayerHealth playerHealth;
+    public string playerTag = "Player";
+
+    [Header("HP To Position")]
+    public Transform leftPoint;
+    public Transform rightPoint;
+    public bool lockY = true;
+
+    float fixedY;
+    Coroutine parentCo;
+
+    void Awake()
     {
-        [Header("HP Source")]
-        public PlayerHealth playerHealth;
-        public string playerTag = "Player";
+        fixedY = transform.position.y;
 
-        [Header("HP To Position")]
-        public Transform leftPoint;
-        public Transform rightPoint;
-        public float followSpeed = 8f;
-        public bool lockY = true;
-
-        float fixedY;
-        Transform currentPlayer;
-
-        void Awake()
+        if (!playerHealth)
         {
-            fixedY = transform.position.y;
+            GameObject p = GameObject.FindGameObjectWithTag(playerTag);
+            if (p) playerHealth = p.GetComponent<PlayerHealth>();
+        }
+    }
 
-            if (!playerHealth)
-            {
-                GameObject p = GameObject.FindGameObjectWithTag(playerTag);
-                if (p) playerHealth = p.GetComponent<PlayerHealth>();
-            }
+    void Update()
+    {
+        if (!playerHealth || !leftPoint || !rightPoint) return;
+
+        float hp01 = playerHealth.maxHp <= 0 ? 0f : (float)playerHealth.currentHp / playerHealth.maxHp;
+        hp01 = Mathf.Clamp01(hp01);
+
+        Vector3 target = Vector3.Lerp(leftPoint.position, rightPoint.position, hp01);
+        if (lockY) target.y = fixedY;
+
+        // 直接同步，不做追随
+        transform.position = target;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag(playerTag)) return;
+        RequestParent(other.transform);
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (!other.CompareTag(playerTag)) return;
+
+        // 只在玩家在平台上方时才允许绑定
+        if (other.transform.position.y <= transform.position.y) return;
+
+        // 如果你有 Grapple / PlayerDependencies 才用；没有就删掉这两段
+        Grapple grapple = other.GetComponent<Grapple>();
+        if (grapple != null && grapple.isGrappling)
+        {
+            SafeUnparent(other.transform);
+            return;
         }
 
-        void Update()
+        PlayerDependencies deps = other.GetComponent<PlayerDependencies>();
+        if (deps != null && deps.InputManager != null && deps.InputManager.PlayerInputs.HorizontalMovement != 0)
         {
-            if (!playerHealth || !leftPoint || !rightPoint) return;
-
-            float hp01 = playerHealth.maxHp <= 0 ? 0f : (float)playerHealth.currentHp / playerHealth.maxHp;
-            hp01 = Mathf.Clamp01(hp01);
-
-            Vector3 target = Vector3.Lerp(leftPoint.position, rightPoint.position, hp01);
-            if (lockY) target.y = fixedY;
-
-            transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * followSpeed);
+            SafeUnparent(other.transform);
+            return;
         }
 
-        void OnTriggerEnter2D(Collider2D other)
+        RequestParent(other.transform);
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (!other.CompareTag(playerTag)) return;
+        SafeUnparent(other.transform);
+    }
+
+    void RequestParent(Transform player)
+    {
+        if (player == null) return;
+
+        // 平台如果已被禁用，就别开协程
+        if (!isActiveAndEnabled || !gameObject.activeInHierarchy) return;
+
+        if (player.parent == transform) return;
+
+        if (parentCo != null) StopCoroutine(parentCo);
+        parentCo = StartCoroutine(DoParentNextFrame(player));
+    }
+
+    IEnumerator DoParentNextFrame(Transform player)
+    {
+        yield return null;
+
+        if (player == null) yield break;
+        if (!gameObject.activeInHierarchy) yield break;
+
+        player.SetParent(transform);
+    }
+
+    void SafeUnparent(Transform player)
+    {
+        if (player == null) return;
+        if (player.parent != transform) return;
+
+        // 平台如果已被禁用，就别开协程
+        if (!isActiveAndEnabled || !gameObject.activeInHierarchy)
         {
-            if (!other.CompareTag(playerTag)) return;
-
-            // 进来就记录一下玩家引用
-            currentPlayer = other.transform;
-
-            TryParentPlayer(other.gameObject);
+            // 这里直接硬解绑也行（不需要协程了）
+            player.SetParent(null);
+            return;
         }
 
-        void OnTriggerStay2D(Collider2D other)
+        if (parentCo != null) StopCoroutine(parentCo);
+        StartCoroutine(DoUnparentNextFrame(player));
+
+        IEnumerator DoUnparentNextFrame(Transform player)
         {
-            if (!other.CompareTag(playerTag)) return;
+            yield return null;
 
-            currentPlayer = other.transform;
-
-            // 如果你项目里没有 Grapple / PlayerDependencies，这段就删掉
-            // 有的话就保留，等同官方逻辑
-            Grapple grapple = other.GetComponent<Grapple>();
-            if (grapple != null && grapple.isGrappling)
-            {
-                other.transform.SetParent(null);
-                return;
-            }
-
-            PlayerDependencies deps = other.GetComponent<PlayerDependencies>();
-            if (deps != null && deps.InputManager != null && deps.InputManager.PlayerInputs.HorizontalMovement != 0)
-            {
-                other.transform.SetParent(null);
-                return;
-            }
-
-            TryParentPlayer(other.gameObject);
-        }
-
-        void OnTriggerExit2D(Collider2D other)
-        {
-            if (!other.CompareTag(playerTag)) return;
-
-            if (other.transform.parent == transform)
-                other.transform.SetParent(null);
-
-            if (currentPlayer == other.transform)
-                currentPlayer = null;
-        }
-
-        void TryParentPlayer(GameObject player)
-        {
-            // 必须是玩家在平台上方才绑定，避免侧面/底下乱绑定
-            if (player.transform.position.y > transform.position.y)
-            {
-                if (player.transform.parent != transform)
-                    player.transform.SetParent(transform);
-            }
+            if (player == null) yield break;
+            player.SetParent(null);
         }
     }
 }

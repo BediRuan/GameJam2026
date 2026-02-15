@@ -1,22 +1,23 @@
 using UnityEngine;
 
-public class SpikeDamage : MonoBehaviour
+public class SpikeDamageSmooth : MonoBehaviour
 {
-    public int damage = 1;
-    public float hitCooldown = 0.25f;
+    public int damagePerTick = 2;          // 每次掉几格
+    public float tickInterval = 0.25f;     // 多久掉一次
+    public string playerTag = "Player";
 
-    float nextHitTime;
+    float nextTickTime = 0f;
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (!other.CompareTag("Player")) return;
-        if (Time.time < nextHitTime) return;
+        if (!other.CompareTag(playerTag)) return;
+        if (Time.time < nextTickTime) return;
 
         PlayerHealth hp = other.GetComponent<PlayerHealth>();
-        if (hp)
+        if (hp != null)
         {
-            hp.TakeDamage(damage);
-            nextHitTime = Time.time + hitCooldown;
+            hp.TakeDamage(damagePerTick);
+            nextTickTime = Time.time + tickInterval;
         }
     }
 }
