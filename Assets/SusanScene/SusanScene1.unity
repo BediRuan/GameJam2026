@@ -948,51 +948,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1220989739
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1220989741}
-  - component: {fileID: 1220989740}
-  m_Layer: 0
-  m_Name: PuaseManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1220989740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1220989739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48e25a5ae0f2e9f4286b3202e19711b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PauseManager
-  pauseOverlay: {fileID: 276761170}
---- !u!4 &1220989741
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1220989739}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.9449, y: 2.91565, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1636822999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1289,6 +1244,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b33ef84519574724080ae565839e76f0, type: 3}
+--- !u!1001 &300779823429466710
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 127771667456571715, guid: ad5a6f23586490e4183f06b1d979b6d7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.9449
+      objectReference: {fileID: 0}
+    - target: {fileID: 127771667456571715, guid: ad5a6f23586490e4183f06b1d979b6d7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.91565
+      objectReference: {fileID: 0}
+    - target: {fileID: 127771667456571715, guid: ad5a6f23586490e4183f06b1d979b6d7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 127771667456571715, guid: ad5a6f23586490e4183f06b1d979b6d7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 127771667456571715, guid: ad5a6f23586490e4183f06b1d979b6d7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 127771667456571715, guid: ad5a6f23586490e4183f06b1d979b6d7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 127771667456571715, guid: ad5a6f23586490e4183f06b1d979b6d7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 127771667456571715, guid: ad5a6f23586490e4183f06b1d979b6d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 127771667456571715, guid: ad5a6f23586490e4183f06b1d979b6d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 127771667456571715, guid: ad5a6f23586490e4183f06b1d979b6d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3616269215015688427, guid: ad5a6f23586490e4183f06b1d979b6d7, type: 3}
+      propertyPath: pauseOverlay
+      value: 
+      objectReference: {fileID: 276761170}
+    - target: {fileID: 4840339631388286857, guid: ad5a6f23586490e4183f06b1d979b6d7, type: 3}
+      propertyPath: m_Name
+      value: PuaseManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ad5a6f23586490e4183f06b1d979b6d7, type: 3}
 --- !u!1001 &1801953294899236487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1473,7 +1489,7 @@ SceneRoots:
   - {fileID: 680723801}
   - {fileID: 1801953294899236487}
   - {fileID: 119922279}
-  - {fileID: 1220989741}
+  - {fileID: 300779823429466710}
   - {fileID: 276761172}
   - {fileID: 7812715524214714783}
   - {fileID: 7112270340592074548}
