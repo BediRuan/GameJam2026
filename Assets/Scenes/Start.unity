@@ -962,7 +962,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press Space to Start
+  m_text: Press Enter to Start
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4ad0d3aa6f4c1d541bff3320b363b016, type: 2}
   m_sharedMaterial: {fileID: 400010494775368209, guid: 4ad0d3aa6f4c1d541bff3320b363b016, type: 2}
