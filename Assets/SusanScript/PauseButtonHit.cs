@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering; // ✅ Volume 在这里
+using UnityEngine.SceneManagement; // ✅ 记得加在顶部
+
 
 public class PauseButtonHit : MonoBehaviour
 {
@@ -10,6 +12,23 @@ public class PauseButtonHit : MonoBehaviour
     public float bumpUp = 0.18f;
     public float bumpTime = 0.08f;
     public float hitAlpha = 0.6f;
+
+    [Header("Per-Level Dialogue (One-shot)")]
+    public bool enableDialogueOnVolumeOn = true;
+
+    // 你第二段对话的Canvas（或对话根物体）
+    [Header("Dialogue To Trigger")]
+    public DialogueSequence dialogueToPlay; // ✅ 拖第二段 DialogueSequence 组件进来
+
+
+    bool _dialoguePlayedThisScene = false;
+    int _cachedSceneBuildIndex = -1;
+
+    [Tooltip("If empty, will use current scene name as key.")]
+    public string levelKeyOverride = "";
+
+
+
 
     [Header("Sprite Swap (Pause ⇄ Run)")]
     [Tooltip("未暂停时显示的按钮图（留空则用物体当前 Sprite）")]
@@ -45,6 +64,10 @@ public class PauseButtonHit : MonoBehaviour
         startPos = transform.position;
     }
 
+    void Update()
+    {
+        EnsureSceneCache();
+}
     void Start()
     {
         SyncSpriteToPauseState();
@@ -96,10 +119,16 @@ public class PauseButtonHit : MonoBehaviour
     {
         if (targetVolume == null) return;
 
-        // 认为 “接近 0” 就算是关；否则算开
         bool isOff = targetVolume.weight <= 0.001f;
+        bool turningOn = isOff;
+
         targetVolume.weight = isOff ? weightWhenOn : weightWhenOff;
+
+        if (turningOn)
+            TryPlayDialogueOnceThisScene();
     }
+
+
 
     IEnumerator BumpRoutine()
     {
@@ -137,4 +166,36 @@ public class PauseButtonHit : MonoBehaviour
         if (sr != null)
             sr.color = startColor;
     }
+
+    void TryPlayDialogueOnceThisScene()
+    {
+        EnsureSceneCache();
+        if (!enableDialogueOnVolumeOn) return;
+        if (_dialoguePlayedThisScene) return;
+
+        _dialoguePlayedThisScene = true;
+
+        if (dialogueToPlay == null)
+        {
+            Debug.LogWarning("[PauseButtonHit] dialogueToPlay is NULL. Did you drag DialogueSequence into inspector?");
+            return;
+        }
+
+        // ✅ 关键：由 DialogueSequence 自己负责打开 panelRoot、打字、冻结等
+        dialogueToPlay.PlayNow();
+    }
+
+
+
+    void EnsureSceneCache()
+    {
+        int cur = SceneManager.GetActiveScene().buildIndex;
+        if (_cachedSceneBuildIndex != cur)
+        {
+            _cachedSceneBuildIndex = cur;
+            _dialoguePlayedThisScene = false; // ✅ 进入/切换到新关卡时，重置“第一次”
+        }
+    }
+
+
 }

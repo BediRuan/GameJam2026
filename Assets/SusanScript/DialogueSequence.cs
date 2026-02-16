@@ -47,6 +47,9 @@ public class DialogueSequence : MonoBehaviour
     // ✅ 句子播完事件：参数是当前句子的 index（0-based）
     public System.Action<int> OnLineFinished;
 
+    public bool autoStartWhenGrounded = true; // ✅ 新增：是否落地自动播
+
+
     [Header("Debug")]
     public bool drawGizmos = true;
 
@@ -102,10 +105,12 @@ public class DialogueSequence : MonoBehaviour
     {
         if (!started && startDisabled)
         {
-            if (IsPlayerGrounded())
+            // ✅ 只有允许“落地自动播”才会检查 grounded
+            if (autoStartWhenGrounded && IsPlayerGrounded())
                 BeginNow();
             return;
         }
+
 
         if (!isPlaying) return;
 

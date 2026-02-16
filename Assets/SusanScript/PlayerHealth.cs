@@ -11,6 +11,9 @@ public class PlayerHealth : MonoBehaviour
     [Header("Damage Cooldown")]
     public float invincibleSeconds = 0.8f;
 
+    public System.Action OnDamaged; // ✅ 新增：受伤事件
+
+
     [Header("Blink")]
     public float blinkInterval = 0.08f;
 
@@ -85,6 +88,8 @@ public class PlayerHealth : MonoBehaviour
         if (Time.time < invincibleUntil) return;
 
         currentHp = Mathf.Max(0, currentHp - amount);
+        OnDamaged?.Invoke(); // ✅ 通知：玩家受伤了
+
         onHpChanged?.Invoke(currentHp, maxHp);
         onDamageTaken?.Invoke(amount);
 
@@ -107,6 +112,8 @@ public class PlayerHealth : MonoBehaviour
         SetRenderersVisible(true);
         blinkCo = StartCoroutine(BlinkRoutine());
     }
+
+
 
     IEnumerator BlinkRoutine()
     {
