@@ -5,28 +5,30 @@ public class GlassBreakable2D : MonoBehaviour
 {
     [Header("Break Conditions")]
     public string playerTag = "Player";
-    [Range(0f, 1f)] public float volumeThreshold = 0.9f; // 90%
+    [Range(0f, 1f)] public float volumeThreshold = 0.9f;
 
     [Tooltip("If true, volume-based breaking only happens when switch is ON (if you use VolumeSwitchState).")]
     public bool requireSwitchOnForVolumeBreak = true;
 
+    [Header("Player Contact Break")]
+    [Tooltip("OFF = player can stand/walk on it without breaking.")]
+    public bool breakOnPlayerContact = false;
+
+    [Tooltip("Only break on contact if impact is strong enough. (0 = ignore impact check)")]
+    public float minImpactToBreak = 0f;
+
     [Header("Animation")]
     public Animator animator;
-    [Tooltip("Animator Trigger name to play breaking animation")]
     public string breakTriggerName = "Break";
-
-    [Tooltip("Seconds to wait before disappearing (match your animation length). If 0, will hide immediately after triggering.")]
     public float disappearDelay = 0.5f;
 
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip breakSfx;
-
-    [Tooltip("If true, will play as OneShot (recommended).")]
     public bool playOneShot = true;
 
     [Header("After Break")]
-    public bool destroyAfterBreak = true; // false = SetActive(false)
+    public bool destroyAfterBreak = true;
 
     private bool broken;
 
@@ -40,11 +42,9 @@ public class GlassBreakable2D : MonoBehaviour
     {
         if (broken) return;
 
-        // “Ù¡ø¥•∑¢ÀÈ¡—
         bool switchOk = true;
         if (requireSwitchOnForVolumeBreak)
         {
-            // »Áπ˚ƒ„√ª”– VolumeSwitchState “≤√ªπÿœµ£∫∞—’‚“ª––…æµÙªÚ»√ requireSwitchOnForVolumeBreak=false
             switchOk = VolumeSwitchState.IsOn;
         }
 
@@ -57,14 +57,28 @@ public class GlassBreakable2D : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (broken) return;
+
+        // ‚úÖ ÂÖ≥Èó≠Áé©ÂÆ∂Êé•Ëß¶Á¢éË£ÇÔºöË∏©‰∏äÂéª‰∏ç‰ºöÁ¢é
+        if (!breakOnPlayerContact) return;
+
         if (!collision.collider.CompareTag(playerTag)) return;
+
+        // ÂèØÈÄâÔºöÂè™ÊúâÊíûÂáªÂæàÁåõÊâçÁ¢éÔºàÈÅøÂÖçËΩªËΩªËêΩÂú∞Â∞±Á¢éÔºâ
+        if (minImpactToBreak > 0f && collision.relativeVelocity.magnitude < minImpactToBreak) return;
+
         Break();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (broken) return;
+
+        // ‚úÖ ÂÖ≥Èó≠Áé©ÂÆ∂Êé•Ëß¶Á¢éË£ÇÔºöË∏©‰∏äÂéª‰∏ç‰ºöÁ¢é
+        if (!breakOnPlayerContact) return;
+
         if (!other.CompareTag(playerTag)) return;
+
+        // Trigger Ê≤°ÊúâÁõ∏ÂØπÈÄüÂ∫¶‰ø°ÊÅØÔºåÈÄöÂ∏∏‰∏çÂª∫ËÆÆÁî®‚ÄúË∏©Á¢é‚ÄùÈÄªËæë
         Break();
     }
 
@@ -73,18 +87,15 @@ public class GlassBreakable2D : MonoBehaviour
         if (broken) return;
         broken = true;
 
-        // πÿµÙ≈ˆ◊≤£¨±‹√‚÷ÿ∏¥¥•∑¢
         var col = GetComponent<Collider2D>();
         if (col) col.enabled = false;
 
-        // ≤•∑≈∂Øª≠
         if (animator != null && !string.IsNullOrEmpty(breakTriggerName))
         {
             animator.ResetTrigger(breakTriggerName);
             animator.SetTrigger(breakTriggerName);
         }
 
-        // ≤•∑≈“Ù–ß
         if (audioSource != null && breakSfx != null)
         {
             if (playOneShot) audioSource.PlayOneShot(breakSfx);
@@ -95,15 +106,8 @@ public class GlassBreakable2D : MonoBehaviour
             }
         }
 
-        // œ˚ ß
-        if (disappearDelay <= 0f)
-        {
-            FinishDisappear();
-        }
-        else
-        {
-            Invoke(nameof(FinishDisappear), disappearDelay);
-        }
+        if (disappearDelay <= 0f) FinishDisappear();
+        else Invoke(nameof(FinishDisappear), disappearDelay);
     }
 
     private void FinishDisappear()
@@ -112,4 +116,3 @@ public class GlassBreakable2D : MonoBehaviour
         else gameObject.SetActive(false);
     }
 }
-

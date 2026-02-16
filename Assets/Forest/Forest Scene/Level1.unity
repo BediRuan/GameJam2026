@@ -461,8 +461,12 @@ PrefabInstance:
       value: "\u771F-\u5207\u6362level\u65F6\u4F7F\u7528\u7684Portal"
       objectReference: {fileID: 0}
     - target: {fileID: 7412279450126162737, guid: 9aa42f92f231d87419bcd8119b429d39, type: 3}
+      propertyPath: nextSpawnId
+      value: A1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412279450126162737, guid: 9aa42f92f231d87419bcd8119b429d39, type: 3}
       propertyPath: targetSceneName
-      value: Level2
+      value: Level3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
