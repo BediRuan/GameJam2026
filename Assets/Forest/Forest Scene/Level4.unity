@@ -3592,9 +3592,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 4ad0d3aa6f4c1d541bff3320b363b016, type: 2}
     - target: {fileID: 1173676091689905774, guid: b33ef84519574724080ae565839e76f0, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.08235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173676091689905774, guid: b33ef84519574724080ae565839e76f0, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.08235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173676091689905774, guid: b33ef84519574724080ae565839e76f0, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.08235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173676091689905774, guid: b33ef84519574724080ae565839e76f0, type: 3}
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 400010494775368209, guid: 4ad0d3aa6f4c1d541bff3320b363b016, type: 2}
+    - target: {fileID: 1173676091689905774, guid: b33ef84519574724080ae565839e76f0, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279571733
+      objectReference: {fileID: 0}
     - target: {fileID: 1173676091689905774, guid: b33ef84519574724080ae565839e76f0, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -4425,11 +4441,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2419877788825938061, guid: 5472c6d952a075f49b322e53ee4dcad0, type: 3}
       propertyPath: spawnOffset.y
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2419877788825938061, guid: 5472c6d952a075f49b322e53ee4dcad0, type: 3}
       propertyPath: useColliderTop
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879508985832422013, guid: 5472c6d952a075f49b322e53ee4dcad0, type: 3}
+      propertyPath: jumpForce
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2879508985832422013, guid: 5472c6d952a075f49b322e53ee4dcad0, type: 3}
+      propertyPath: amountOfJumps
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5085085918682787721, guid: 5472c6d952a075f49b322e53ee4dcad0, type: 3}
       propertyPath: m_Name
